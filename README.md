@@ -1,2 +1,2 @@
 # booksinspace
-Backend book cataloguing software
+Backend book cataloging software
