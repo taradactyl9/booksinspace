@@ -1,7 +1,7 @@
 {
   "name": "book-database-postgresql",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend book cataloging software",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -17,9 +17,18 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taradactyl9/booksinspace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/taradactyl9/booksinspace/issues"
+  },
+  "homepage": "https://github.com/taradactyl9/booksinspace#readme"
 }
