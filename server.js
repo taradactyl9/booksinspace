@@ -8,17 +8,36 @@ const path = require('path'); // path needed to tell express to look for project
 //Passport Authentication
 const passport = require('passport');
 const GitHubStrategy = require('passport-github');
+const session = require('express-session');
 
-// app.use(bodyParser.json());
+//Passport Session Setup 
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
+
+
+//Use the GitHub Strategy within Passport
+passport.use(new GithubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_CALLBACK_URL
+}, function(accessToken, refreshToken, profile, done){
+    return done(null, profile);
+}))
+
+//Middleware
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set('views', path.join(__dirname, 'app/views')); // sets the views, or template layouts for ejs
 app.set('view engine', 'ejs'); // tells express to use ejs as templating engine
 app.use(express.static('app/static')); // tells express to look in app/static for css, img, or js files
-
-
-app.get('/', ((req, res) => {
-    res.render('index') // sets main layout as index for app
-}))
 
 app.listen(port, function() {
     console.log('Books in Space API is now listening on port 3000...');
