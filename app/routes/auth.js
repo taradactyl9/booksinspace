@@ -4,7 +4,7 @@ const passport = require('passport');
 
 app.get('/github', passport.authenticate('github'));
 
-router.get('/githun/callback', passport.authenticate('github', {failureRedirect: '/login-failed'}),
+router.get('/github/callback', passport.authenticate('github', {failureRedirect: '/login-failed'}),
 function (req, res) {
     res.redirect('/models/index.js');
 });
