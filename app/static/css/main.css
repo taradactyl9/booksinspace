@@ -7,4 +7,9 @@ h3 {
     background-image: url(https://images.pexels.com/photos/5984591/pexels-photo-5984591.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
     background-size: cover;
     background-repeat: no-repeat;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+}
+
+.lead a {
+    text-shadow: none;
 }
