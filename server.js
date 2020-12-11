@@ -4,6 +4,11 @@ const app = express();
 const port = 3000;
 const path = require('path'); // path needed to tell express to look for project folders inside of /app
 
+
+//Passport Authentication
+const passport = require('passport');
+const GitHubStrategy = require('passport-github');
+
 // app.use(bodyParser.json());
 
 app.set('views', path.join(__dirname, 'app/views')); // sets the views, or template layouts for ejs
