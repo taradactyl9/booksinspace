@@ -9,7 +9,7 @@ const path = require('path'); // path needed to tell express to look for project
 app.set('views', path.join(__dirname, 'app/views')); // sets the views, or template layouts for ejs
 app.set('view engine', 'ejs'); // tells express to use ejs as templating engine
 app.use(express.static('app/static')); // tells express to look in app/static for css, img, or js files
-const db = require("./app/models");
+const db = require("./models");
 db.sequelize.sync();
 
 app.listen(port, function() {
