@@ -1,3 +1,11 @@
+/* ==================================================== */
+
+
+/* =================== MEDIA QUERIES ================== */
+
+
+/* ==================================================== */
+
 @media screen and (max-width: 650px) {
     .col {
         width: 100%;
@@ -28,13 +36,6 @@ h3 {
     display: inline-block;
 }
 
-.form-inline {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: nowrap;
-    flex-flow: nowrap;
-}
-
 
 /* ==================================================== */
 
@@ -43,6 +44,13 @@ h3 {
 
 
 /* ==================================================== */
+
+.form-inline {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: nowrap;
+    flex-flow: nowrap;
+}
 
 .jumbotron {
     background-image: url('../img/books.jpg');
@@ -79,30 +87,24 @@ h3 {
     padding: 20px 0 30px 0;
 }
 
-
-/* style inputs and link buttons */
-
 input,
 .social-btn {
     width: 100%;
-    padding: 12px;
+    /* padding: 12px; */
     border-radius: 4px;
     margin: 5px 0;
     opacity: 0.85;
     display: inline-block;
-    font-size: 17px;
+    /* font-size: 17px;
     line-height: 20px;
-    text-decoration: none;
-    /* remove underline from anchors */
+    text-decoration: none; */
 }
 
-input:hover,
+
+/* input:hover,
 .btn:hover {
     opacity: 1;
-}
-
-
-/* add appropriate colors to fb, twitter and google buttons */
+} */
 
 .fb {
     background-color: #3B5998;
@@ -118,66 +120,6 @@ input:hover,
     background-color: #dd4b39;
     color: white;
 }
-
-.col {
-    float: left;
-    width: 50%;
-    margin: auto;
-    padding: 0 50px;
-    margin-top: 6px;
-}
-
-
-/* Clear floats after the columns */
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-
-/* vertical line */
-
-.vl {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    border: 2px solid #ddd;
-    height: 175px;
-}
-
-
-/* text inside the vertical line */
-
-.vl-innertext {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #f1f1f1;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    padding: 8px 10px;
-}
-
-
-/* hide some text on medium and large screens */
-
-.hide-md-lg {
-    display: none;
-}
-
-
-/* bottom container */
-
-.bottom-container {
-    text-align: center;
-    background-color: #666;
-    border-radius: 0px 0px 4px 4px;
-}
-
-
-/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
 
 
 /* ==================================================== */
@@ -200,4 +142,12 @@ input:hover,
     center right;
     width: 550px;
     height: 534px;
+}
+
+button.register-btn {
+    width: 100%;
+}
+
+.signin {
+    margin: 24px 0;
 }
