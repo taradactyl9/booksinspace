@@ -1,3 +1,39 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+
+const dotenv = require('dotenv');
+dotenv.config();
+
+//Passport Authentication
+const passport = require('passport');
+const GitHubStrategy = require('passport-github');
+const session = require('express-session');
+
+//Passport Session Setup 
+app.use(session({
+    secret:'abc123', 
+    resave: false, 
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
+
+//Use the GitHub Strategy within Passport
+passport.use(new GitHubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_CALLBACK_URL
+}, function(accessToken, refreshToken, profile, done){
+    return done(null, profile);
+}))
+
