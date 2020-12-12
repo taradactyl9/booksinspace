@@ -3,7 +3,8 @@ const db = require("../models");
 const Reviews = db.booksdb;
 const Shelves = db.booksdb;
 const Users = db.booksdb;
-const Wanttoread = db.booksdb; */
+const Wanttoread = db.booksdb;
+const Read = db.booksdb */
 const Op = db.Sequelize.Op;
 
 //Books Table
@@ -52,40 +53,78 @@ exports.delete = (req, res) => {
   
 };
 
+//Shelves
+// user adds a book to Read/want to read - create shelves, create shelf id
+exports.create = (req, res) => {
+  
+};
+
+// user changes want to read book to read- update shelf
+exports.update = (req, res) => {
+  
+};
+
 //User Table
-// user signs up - create username, email, id, name, location, acct creation date
+// user signs up - create userid, username, email, name, location, acct creation date
 exports.create = (req, res) => {
   
 };
 
-// user logs in - create login date
+// user logs in 1st - create login date
 exports.create = (req, res) => {
   
 };
 
-// user deletes account
+// user logs in - update login date
+exports.create = (req, res) => {
+  
+};
+
+// user deletes acct 
 exports.deleteAll = (req, res) => {
   
 };
 
-// Profile view
-exports.findAll = (req, res) => {
-  
-};
+// user visits profile page - retrieve user library
+exports.retrieveAll = (req, res) => {
 
-//Shelves Table
-// user adds to read - create read shelf, create shelf id
-exports.create = (req, res) => {
-    db.books.findorCreate
-};
+}
 
-// user adds to want to read - create want to read shelf, create shelf id
-exports.create = (req, res) => {
-  
-};
+//Read Table
+// user views read books - retrieve read books
+exports.retrieveAll = (req, res) => {
 
-// Update a book status - update shelf/change shelf
+}
+// user makes changes to read books -  update shelf
 exports.update = (req, res) => {
-  
-};
+
+}
+
+//Want to read Table
+// user views want to read books - retrieve want to read books
+exports.retrieveAll = (req, res) => {
+
+}
+// user makes changes to want to read books -  update shelf
+exports.update = (req, res) => {
+
+}
+
+
+
+
+
+ //THESE ARE THE ROUTES THAT NEED CONTROLLERS
+ 
+    //Add a book - POST Request
+    
+    //Retrieve your Shelf - GET Request
+
+    //Add to shelf as want to read - POST route
+
+    //Mark as Read - Patch Request
+
+    //Rate a book - Patch Request
+
+    //Add written review - Patch request
 
