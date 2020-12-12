@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "",
+    "password": null,
+    "database": "booksdb",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "",
+    "password": null,
+    "database": "booksdbtest",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "",
+    "password": null,
+    "database": "booksdb",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
