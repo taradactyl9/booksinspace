@@ -52,9 +52,40 @@ exports.delete = (req, res) => {
   
 };
 
-//Shelves
-// user adds a book to Read/want to read - create shelves, create shelf id
+//User Table
+// user signs up - create username, email, id, name, location, acct creation date
 exports.create = (req, res) => {
+  
+};
+
+// user logs in - create login date
+exports.create = (req, res) => {
+  
+};
+
+// user deletes account
+exports.deleteAll = (req, res) => {
+  
+};
+
+// Profile view
+exports.findAll = (req, res) => {
+  
+};
+
+//Shelves Table
+// user adds to read - create read shelf, create shelf id
+exports.create = (req, res) => {
+    db.books.findorCreate
+};
+
+// user adds to want to read - create want to read shelf, create shelf id
+exports.create = (req, res) => {
+  
+};
+
+// Update a book status - update shelf/change shelf
+exports.update = (req, res) => {
   
 };
 
