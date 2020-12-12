@@ -3,7 +3,8 @@ const db = require("../models");
 const Reviews = db.booksdb;
 const Shelves = db.booksdb;
 const Users = db.booksdb;
-const Wanttoread = db.booksdb; */
+const Wanttoread = db.booksdb;
+const Read = db.booksdb */
 const Op = db.Sequelize.Op;
 
 //Books Table
@@ -57,6 +58,59 @@ exports.delete = (req, res) => {
 exports.create = (req, res) => {
   
 };
+
+// user changes want to read book to read- update shelf
+exports.update = (req, res) => {
+  
+};
+
+//User Table
+// user signs up - create userid, username, email, name, location, acct creation date
+exports.create = (req, res) => {
+  
+};
+
+// user logs in 1st - create login date
+exports.create = (req, res) => {
+  
+};
+
+// user logs in - update login date
+exports.create = (req, res) => {
+  
+};
+
+// user deletes acct 
+exports.deleteAll = (req, res) => {
+  
+};
+
+// user visits profile page - retrieve user library
+exports.retrieveAll = (req, res) => {
+
+}
+
+//Read Table
+// user views read books - retrieve read books
+exports.retrieveAll = (req, res) => {
+
+}
+// user makes changes to read books -  update shelf
+exports.update = (req, res) => {
+
+}
+
+//Want to read Table
+// user views want to read books - retrieve want to read books
+exports.retrieveAll = (req, res) => {
+
+}
+// user makes changes to want to read books -  update shelf
+exports.update = (req, res) => {
+
+}
+
+
 
 
 
