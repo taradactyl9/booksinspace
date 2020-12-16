@@ -1,4 +1,5 @@
 //Read Table
+db.read.belongsTo(db.shelves);
 // user views read books - retrieve read books
 exports.retrieveAll = (req, res) => {
 

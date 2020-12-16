@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Read = sequelize.define("models", {
+    const Read = sequelize.define('read', {
       book_id: {
             type: Sequelize.STRING
         },
@@ -9,9 +9,8 @@ module.exports = (sequelize, Sequelize) => {
       title: {
         type: Sequelize.STRING
       },
-      date_added: {
-        type: Sequelize.STRING
-      }
+      created_at: {
+        type: Sequelize.DATE      }
     });
   
     return Read;
