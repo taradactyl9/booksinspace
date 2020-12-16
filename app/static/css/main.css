@@ -131,6 +131,7 @@ input,
 /* ==================================================== */
 
 .signup-container {
+    box-sizing: border-box;
     margin: 20px auto;
 }
 
@@ -150,4 +151,23 @@ button.register-btn {
 
 .signin {
     margin: 24px 0;
+}
+
+
+/* ==================================================== */
+
+
+/* ================ USER PROFILE =============== */
+
+
+/* ==================================================== */
+
+.user-container {
+    box-sizing: border-box;
+    margin: 20px auto;
+}
+
+.user-container .card-img-top {
+    padding: 20px 0;
+    margin: 0 auto;
 }
