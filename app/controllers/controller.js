@@ -1,11 +1,12 @@
 const db = require("../models");
-/* const Books = db.booksdb;
+ const Books = db.booksdb;
 const Reviews = db.booksdb;
 const Shelves = db.booksdb;
 const Users = db.booksdb;
 const Wanttoread = db.booksdb;
-const Read = db.booksdb */
+const Read = db.booksdb 
 const Op = db.Sequelize.Op;
+
 
 //Books Table
 // Select a book then create a book id
@@ -110,7 +111,6 @@ exports.retrieveAll = (req, res) => {
 exports.update = (req, res) => {
 
 }
-
 
 
 
