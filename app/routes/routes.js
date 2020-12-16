@@ -1,10 +1,9 @@
 const express = require('express');
-const router = require("express").Router();
-const controller = require("..controllers/controller.js"); //Placeholder
+const router = express.Router();
+//const controller = require("../controllers/controller"); //Placeholder
 
-
-router.get('/', (req, res) => {
-    res.render('index');
+router.get('/book', (req, res) => {
+    res.send('this is the books route');
 });
 
 //Add a book - POST Request

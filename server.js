@@ -15,9 +15,8 @@ app.set('views', path.join(__dirname, 'app/views')); // sets the views, or templ
 app.set('view engine', 'ejs'); // tells express to use ejs as templating engine
 app.use(express.static('app/static')); // tells express to look in app/static for css, img, or js files
 
-const db = require("./models");
-db.sequelize.sync();
-
+//const db = require("");
+//db.sequelize.sync();
 
 //Passport Authentication
 const passport = require('passport');
@@ -50,6 +49,10 @@ passport.use(new GitHubStrategy({
 }, function(accessToken, refreshToken, profile, done){
     return done(null, profile);
 }))
+
+//Requiring the routes
+var routes = require("./app/routes/routes");
+app.use('/booksinspace', routes);
 
 app.get('/', (req, res) => {
     res.render('index');
