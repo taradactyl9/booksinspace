@@ -14,15 +14,20 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   }
 });
 
-const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+<<<<<<< HEAD
+db.booksdb = require("../models")(sequelize, Sequelize);
+console.log(sequelize.authenticate());
+
+=======
 db.books = require("../models/books.js")(sequelize, Sequelize);
 db.reviews = require("../models/reviews.js")(sequelize, Sequelize);
 db.shelves = require("../models/shelves.js")(sequelize, Sequelize);
 db.users = require("../models/users.js")(sequelize, Sequelize);
 db.wanttoread = require("../models/wanttoread.js")(sequelize, Sequelize);
+>>>>>>> 87f0fa777d7efc681a6e7f12e9bc9b72d90be060
 
 module.exports = db;
