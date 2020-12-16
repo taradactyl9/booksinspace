@@ -10,7 +10,8 @@ const Op = db.Sequelize.Op;
 //Books Table
 // Select a book then create a book id
 exports.create = (req, res) => {
-    db.books.findorCreate
+   // db.books.findorCreate
+   console.log('Books');
 };
 
 // Mark it as Read/Want to read
