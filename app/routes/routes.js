@@ -2,9 +2,10 @@ const express = require('express');
 const router = require("express").Router();
 const controller = require("..controllers/controller.js"); //Placeholder
 
+
 //Add a book - POST Request
 
-router.post('/:id', controller.create); //PLACEHOLDER 
+router.post('/', controller.create); //PLACEHOLDER 
 
 //Retrieve your Shelf - GET Request
 
