@@ -14,4 +14,4 @@ router.get('/logout', (req, res, next) => {
     res.redirect('/logged-out');
 })
 
-module.exports = router;
+module.exports= router;

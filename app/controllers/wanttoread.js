@@ -1,3 +1,4 @@
+db.wanttoread.belongsTo(db.shelves);
 exports.findAll = (req, res) => {
     if (!books.length) {
         next();

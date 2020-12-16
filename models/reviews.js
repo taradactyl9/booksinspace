@@ -1,7 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
-    const Reviews = sequelize.define("models", {
+    const Reviews = sequelize.define('reviews', {
       review_id: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            primaryKey: true
         },
       user_id: {
         type: Sequelize.STRING

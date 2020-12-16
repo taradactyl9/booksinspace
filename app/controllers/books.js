@@ -1,5 +1,6 @@
 const db = require("../models");
 const Op = db.Sequelize.Op;
+db.books.belongsTo(db.users);
 var primaryId = 1;
 
 
@@ -24,9 +25,12 @@ const books = {
   };
   
    // Save book to shelves
-   booksdb.create()
+   booksdb.books.create({
+       title: 'Windup Bird Chronicles'
+   })
    .then(data => {
-     res.send(data);
+    //  res.send(data);
+    console.log(`New book ${data.title}, with id ${data.book_id} has been saved.`);
    })
    .catch(err => {
      res.status(500).send({
