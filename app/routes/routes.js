@@ -8,7 +8,7 @@ router.get('/book', (req, res) => {
 
 //Add a book - POST Request
 
-//router.post('/', controller.create); //PLACEHOLDER 
+router.post('/', controller.create); //PLACEHOLDER 
 
 //Retrieve your Shelf - GET Request
 
