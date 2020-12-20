@@ -1,4 +1,4 @@
-var Books = require("../../models/books");
+var books = require("../../models/books");
 // const Op = db.Sequelize.Op;
 db.books.belongsTo(db.users);
 var primaryId = 1;
@@ -16,17 +16,9 @@ exports.create = (req, res) => {
   }
 };
 
-const books = {
-    book_id: req.body.id,
-    title: req.body.title,
-    user_id: req.body.user_id,
-    date_read: req.body.date_read, 
-    shelf_id: req.body.shelf_id
-  };
-  
-   // Save book to shelves on POST
-   exports.create = function(req, res) {
-      res.send ('NOT IMPLEMENTED: Book create POST')
+  // Save book to shelves on POST
+  exports.create = function(req, res) {
+    res.send ('NOT IMPLEMENTED: Book create POST')
    };
 
 // Mark it as Read/Want to read on UPDATE

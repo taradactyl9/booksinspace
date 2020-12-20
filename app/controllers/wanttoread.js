@@ -1,11 +1,5 @@
+var wanttoread = require("../../models/wanttoread");
 db.wanttoread.belongsTo(db.shelves);
-exports.findAll = (req, res) => {
-    if (!books.length) {
-        next();
-    }
-    res.send(wanttoread);
-}
-
 //Want to read Table
 // user views want to read books - retrieve want to read books
 exports.findAll = function(req, res) {
