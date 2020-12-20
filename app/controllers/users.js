@@ -45,22 +45,23 @@ const users = {
    });
 
 
-// user logs in 1st - create login date
-exports.create = (req, res) => {
-  
+// user logs in 1st - create login date POST
+exports.create = function(req, res) {
+  res.send('NOT IMPLEMENTED: login date created')
 };
 
-// user logs in - update login date
-exports.create = (req, res) => {
-  
+// user logs in - update login date PATCH
+exports.update = function(req, res) {
+  res.send('NOT IMPLEMENTED: user login date update PATCH')
 };
 
-// user deletes acct 
-exports.deleteAll = (req, res) => {
-  
+
+// user deletes acct POST
+exports.deleteAll = function(req, res) {
+  res.send('NOT IMPLEMENTED: user deletes acct POST')
 };
 
-// user visits profile page - retrieve user library
-exports.retrieveAll = (req, res) => {
-
+// user visits profile page - retrieve user library GET
+exports.retrieveAll = function(req, res) {
+  res.send('NOT IMPLEMENTED: user retrieves all books for profile page GET')
 }

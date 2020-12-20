@@ -1,5 +1,5 @@
-const db = require("../models");
-const Op = db.Sequelize.Op;
+var Books = require("../../models/books");
+// const Op = db.Sequelize.Op;
 db.books.belongsTo(db.users);
 var primaryId = 1;
 
@@ -24,59 +24,49 @@ const books = {
     shelf_id: req.body.shelf_id
   };
   
-   // Save book to shelves
-   booksdb.books.create({
-       title: 'Windup Bird Chronicles'
-   })
-   .then(data => {
-    //  res.send(data);
-    console.log(`New book ${data.title}, with id ${data.book_id} has been saved.`);
-   })
-   .catch(err => {
-     res.status(500).send({
-       message:
-         err.message || "Some error occurred while saving book."
-     });
-   });
+   // Save book to shelves on POST
+   exports.create = function(req, res) {
+      res.send ('NOT IMPLEMENTED: Book create POST')
+   };
 
-// Mark it as Read/Want to read
-exports.update = (req, res) => {
-  
+// Mark it as Read/Want to read on UPDATE
+exports.update = function(req, res) {
+  res.send('NOT IMPLEMENTED: Book update PATCH')
 };
 
-// Rate a book 1st time
-exports.create = (req, res) => {
-  
+// Rate a book 1st time on POST
+exports.create = function(req, res) {
+  res.send('NOT IMPLEMENTED: Book rating CREATE')
 };
 
-// Change a book rating
-exports.update = (req, res) => {
-  
+// Change a book rating on UPDATE
+exports.update = function(req, res) {
+  res.send('NOT IMPLEMENTED: Book rating update PATCH')
 };
 
-// Review a book 
-exports.create = (req, res) => {
-  
+// Review a book on POST
+exports.create = function(req, res) {
+  res.send('NOT IMPLEMENTED: Book review create POST')
 };
 
-// Change a book review
-exports.update = (req, res) => {
-  
+// Change a book review on UPDATE
+exports.update = function(req, res) {
+  res.send('NOT IMPLEMENTED: Book review update PATCH')
 };
 
-// Add a book read date
-exports.create = (req, res) => {
-  
+// Add a book read date on POST
+exports.create = function(req, res) {
+  res.send('NOT IMPLEMENTED: Book date create POST')
 };
 
-// Change a book read date
-exports.update = (req, res) => {
-  
+// Change a book read date on UPDATE
+exports.update = function(req, res) {
+  res.send('NOT IMPLEMENTED: Book date update PATCH')
 };
 
 // Remove a book from shelf
-exports.delete = (req, res) => {
-  
+exports.delete = function(req, res) {
+  res.send('NOT IMPLEMENTED: Book delete POST')
 };
 
 

@@ -11,7 +11,9 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       rating: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        min: 1,
+        max: 5
       },
       book_id: {
         type: Sequelize.STRING

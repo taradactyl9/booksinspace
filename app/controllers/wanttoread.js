@@ -8,10 +8,10 @@ exports.findAll = (req, res) => {
 
 //Want to read Table
 // user views want to read books - retrieve want to read books
-exports.retrieveAll = (req, res) => {
-
+exports.findAll = function(req, res) {
+    res.send ('NOT IMPLEMENTED: Book create POST')
 }
 // user makes changes to want to read books -  update shelf
-exports.update = (req, res) => {
-
-};
+exports.update = function(req, res) {
+    res.send ('NOT IMPLEMENTED: UPDATE shelf on PATCH')
+}
