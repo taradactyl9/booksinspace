@@ -1,4 +1,5 @@
 //Read Table
+var Read = require("../../models/read");
 db.read.belongsTo(db.shelves);
 
 // user views read books - retrieve read books

@@ -1,6 +1,4 @@
-// Global variables for our prototype
-// Orders array for storing and manipulating orders
-var shelves = [];
+var Shelves = require("../../models/shelves");
 // Used to assign unique ids to each order
 var primaryId = 1;
 
