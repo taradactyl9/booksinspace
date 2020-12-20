@@ -1,7 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
-    const Books = sequelize.define("models", {
+    var Books = sequelize.define('books', {
       book_id: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        primaryKey: true
       },
       title: {
         type: Sequelize.STRING

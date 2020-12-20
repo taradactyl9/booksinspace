@@ -1,7 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
-    const Shelves = sequelize.define("models", {
+    const Shelves = sequelize.define('shelves', {
       shelf_id: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        primaryKey: true
       },
       shelf_name: {
         type: Sequelize.STRING
@@ -15,9 +16,9 @@ module.exports = (sequelize, Sequelize) => {
       location: {
         type: Sequelize.STRING
       },
-      joined: {
-        type: Sequelize.DATE
-      }
+      created_at: {
+        type: Sequelize.DATE      }
+      
     });
     
     return Shelves;
