@@ -1,11 +1,11 @@
 var wanttoread = require("../../models/wanttoread");
-db.wanttoread.belongsTo(db.shelves);
+// db.wanttoread.belongsTo(db.shelves);
 //Want to read Table
 // user views want to read books - retrieve want to read books
-exports.findAll = function(req, res) {
-    res.send ('NOT IMPLEMENTED: Book create POST')
+exports.wanttoread_findAll_get = function(req, res) {
+    res.send ('NOT IMPLEMENTED: list all want to read books GET')
 }
 // user makes changes to want to read books -  update shelf
-exports.update = function(req, res) {
+exports.wanttoread_update_patch = function(req, res) {
     res.send ('NOT IMPLEMENTED: UPDATE shelf on PATCH')
 }

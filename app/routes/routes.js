@@ -1,28 +1,28 @@
+// Route module
 const express = require('express');
 const router = express.Router();
-//const controller = require("../controllers/controller"); //Placeholder
 
-router.get('/book', (req, res) => {
-    res.send('this is the books route');
-});
+// Require controller modules.
+var books_controller = require('../controllers/booksController');
+var read_controller = require('../controllers/readController');
+var reviews_controller = require('../controllers/reviewsController');
+var shelves_controller = require('../controllers/shelvesController');
+var users_controller = require('../controllers/usersController');
+var wanttoread_controller = require('../controllers/wanttoreadController');
+
+/// BOOK ROUTES ///
+
+//GET user home page.
+router.get('/'. shelves_controller.shelves_findAll_get);
 
 //Add a book - POST Request
+router.post('/books/create', books_controller.books_create_post);
 
-router.post('/', controller.create); //PLACEHOLDER 
+//Mark as Read/Want to Read on update
+router.patch('/books/update', books_controller.book_update_patch);
 
-//Retrieve your Shelf - GET Request
-
-//router.get("/", controller.findAll); // PLACEHOLDER
-
-//Add to shelf as want to read - POST route
-
-//router.post("/", controller.update); //PLACEHOLDER
-
-//Mark as Read - Patch Request
-
-//router.patch("/", controller.update); //PLACEHOLDER
-
-//Rate a book - Patch Request
+//Rate a book - Post
+router.post('/books/create', books_controller.rate_create_post);
 
 //router.patch("/", contoller.update);
 
@@ -33,5 +33,6 @@ router.post('/', controller.create); //PLACEHOLDER
 //Delete a book from shelf - delete request
 
 //router.delete("/", controller.delete);
+app.use('/routes', routes);
 
 module.exports = router;
