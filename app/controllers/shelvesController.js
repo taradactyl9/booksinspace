@@ -4,14 +4,17 @@ var primaryId = 1;
 
 //Shelves
 // user adds a book to Read/want to read - create shelves, create shelf id
-exports.create = function(req, res) {
+exports.shelves_create_post = function(req, res) {
     res.send ('NOT IMPLEMENTED: shelf id create POST')
  };
 
 // user changes want to read book to read- update shelf
-exports.update = function(req, res) {
+exports.shelves_update_patch = function(req, res) {
     res.send('NOT IMPLEMENTED: Update shelf PATCH')
   };
 
-
+// user views all shelves with all books
+exports.shelves_findAll_get = function(req, res) {
+  res.send('NOT IMPLEMENTED: list all shelves GET')
+};
 

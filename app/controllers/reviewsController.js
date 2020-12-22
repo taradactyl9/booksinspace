@@ -4,21 +4,21 @@ var reviews = require("../../models/reviews");
 var primaryId = 1;
 
 //create a new review
-exports.create = function(req, res) {
+exports.review_create_post = function(req, res) {
     res.send('NOT IMPLEMENTED: Book review create POST')
   };
 
 //update a review
-exports.update = function(req, res) {
+exports.review_update_patch = function(req, res) {
     res.send('NOT IMPLEMENTED: Book review update PATCH')
   };
   
 // Review a book on POST
-exports.create = function(req, res) {
+exports.review_create_post = function(req, res) {
     res.send('NOT IMPLEMENTED: Book review create POST')
   };
   
   // Change a book review on UPDATE
-  exports.update = function(req, res) {
+  exports.reivew_update_patch = function(req, res) {
     res.send('NOT IMPLEMENTED: Book review update PATCH')
   };

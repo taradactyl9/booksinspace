@@ -1,12 +1,12 @@
 var books = require("../../models/books");
 // const Op = db.Sequelize.Op;
-db.books.belongsTo(db.users);
+// db.books.belongsTo(db.users);
 var primaryId = 1;
 
 
 //Books Table
 // Select a book then create a book id
-exports.create = (req, res) => {
+exports.book_create_get = (req, res) => {
     // Validate request
   if (!req.body.title) {
     res.status(400).send({
@@ -16,48 +16,48 @@ exports.create = (req, res) => {
   }
 };
 
-  // Save book to shelves on POST
-  exports.create = function(req, res) {
-    res.send ('NOT IMPLEMENTED: Book create POST')
-   };
+// Save book to shelves on POST
+ exports.book_create_post = function(req, res) {
+   res.send ('NOT IMPLEMENTED: Book create POST')
+  };
 
 // Mark it as Read/Want to read on UPDATE
-exports.update = function(req, res) {
+exports.book_update_patch = function(req, res) {
   res.send('NOT IMPLEMENTED: Book update PATCH')
 };
 
 // Rate a book 1st time on POST
-exports.create = function(req, res) {
+exports.rate_create_post = function(req, res) {
   res.send('NOT IMPLEMENTED: Book rating CREATE')
 };
 
 // Change a book rating on UPDATE
-exports.update = function(req, res) {
+exports.rating_update_patch = function(req, res) {
   res.send('NOT IMPLEMENTED: Book rating update PATCH')
 };
 
 // Review a book on POST
-exports.create = function(req, res) {
+exports.review_create_post = function(req, res) {
   res.send('NOT IMPLEMENTED: Book review create POST')
 };
 
 // Change a book review on UPDATE
-exports.update = function(req, res) {
+exports.review_update_patch = function(req, res) {
   res.send('NOT IMPLEMENTED: Book review update PATCH')
 };
 
 // Add a book read date on POST
-exports.create = function(req, res) {
+exports.readdate_create_post = function(req, res) {
   res.send('NOT IMPLEMENTED: Book date create POST')
 };
 
 // Change a book read date on UPDATE
-exports.update = function(req, res) {
+exports.readdate_update_patch = function(req, res) {
   res.send('NOT IMPLEMENTED: Book date update PATCH')
 };
 
 // Remove a book from shelf
-exports.delete = function(req, res) {
+exports.book_delete_post = function(req, res) {
   res.send('NOT IMPLEMENTED: Book delete POST')
 };
 
