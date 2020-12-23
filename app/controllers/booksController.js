@@ -1,7 +1,9 @@
 var books = require("../../models/books");
-// const Op = db.Sequelize.Op;
+const Sequelize = require('sequelize');
+
+//const Op = db.Sequelize.Op;
 // db.books.belongsTo(db.users);
-var primaryId = 1;
+// var primaryId = 1;
 
 
 //Books Table
@@ -18,8 +20,39 @@ var primaryId = 1;
 
 // Save book to shelves on POST
  exports.books_create_post = function(req, res) {
-   res.send ('NOT IMPLEMENTED: Book create POST')
+
+  const { title } = req.body;
+
+  const newBook = books.create({
+  title
+});
+
+res.json({
+  id: newBook.id
+})
+
+//   if (!req.body.title) {
+//     res.status(400).send({
+//         message: "Book can not be empty!"
+//     });
+//     return;
+// }
+
+// books.create(book) 
+//         .then(data => {
+//             res.send(data);
+//         })
+//         .catch(err => {
+//             res.status(500).send({
+//                 message:
+//                 err.message || "some error occurred while creating the Tutorial."
+//             });
+//         });
+//       primaryId++;
+//       res.send('Book created');
   };
+    
+   //res.send('NOT IMPLEMENTED: Book create POST')
 
 // Mark it as Read/Want to read on UPDATE
 exports.books_update_patch = function(req, res) {
