@@ -19,7 +19,8 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       created_at: {
-        type: Sequelize.DATE      }
+        type: Sequelize.DATE
+      }
     });
   
     return Users;
