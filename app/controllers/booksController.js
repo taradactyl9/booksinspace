@@ -6,23 +6,23 @@ var primaryId = 1;
 
 //Books Table
 // Select a book then create a book id
-exports.book_create_get = (req, res) => {
-    // Validate request
-  if (!req.body.title) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-    return;
-  }
-};
+// exports.book_create_get = (req, res) => {
+//     // Validate request
+//   if (!req.body.title) {
+//     res.status(400).send({
+//       message: "Content can not be empty!"
+//     });
+//     return;
+//   }
+// };
 
 // Save book to shelves on POST
- exports.book_create_post = function(req, res) {
+ exports.books_create_post = function(req, res) {
    res.send ('NOT IMPLEMENTED: Book create POST')
   };
 
 // Mark it as Read/Want to read on UPDATE
-exports.book_update_patch = function(req, res) {
+exports.books_update_patch = function(req, res) {
   res.send('NOT IMPLEMENTED: Book update PATCH')
 };
 
