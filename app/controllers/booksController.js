@@ -1,4 +1,3 @@
-//var books = require("../../models/books").Books;
 const db = require("../../models");
 const Books = db.Books;
 const Sequelize = require('sequelize');
@@ -9,17 +8,6 @@ const Sequelize = require('sequelize');
 
 
 //Books Table
-// Select a book then create a book id
-// exports.book_create_get = (req, res) => {
-//     // Validate request
-//   if (!req.body.title) {
-//     res.status(400).send({
-//       message: "Content can not be empty!"
-//     });
-//     return;
-//   }
-// };
-
 // Save book to shelves on POST
  exports.books_create_post = function(req, res) {
   if (!req.body.title) {
@@ -30,19 +18,30 @@ const Sequelize = require('sequelize');
   }
 
   const { title } = req.body;
+  const { user_id } = req.body;
+  const { date_read } = req.body
+
 
   const newBook = db.Books.create({
-    title
-});
-  res.send({
-    'This book has been added!'
+   title,
+   user_id
   })
-}
+  res.send(
+    'This book has been added!'
+  )
+};
 
 // Mark it as Read/Want to read on UPDATE
 exports.books_update_patch = function(req, res) {
-  res.send('NOT IMPLEMENTED: Book update PATCH')
-};
+  const book_id = req.params.book_id;
+  Books.update({
+  title: req.body.title,
+  user_id: req.body.user_id,
+  date_read: req.body.date_read,
+  status: req.body.status}, {where: {status: req.params.status} }).then(() => {
+    res.status(200).send("updated book status = " + status);
+  });
+ 
 
 // Rate a book 1st time on POST
 exports.rate_create_post = function(req, res) {
@@ -100,4 +99,4 @@ exports.book_delete_post = function(req, res) {
     //Rate a book - Patch Request
 
     //Add written review - Patch request
-
+}
