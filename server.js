@@ -14,6 +14,7 @@ dotenv.config();
 app.set('views', path.join(__dirname, 'app/views')); // sets the views, or template layouts for ejs
 app.set('view engine', 'ejs'); // tells express to use ejs as templating engine
 app.use(express.static('app/static')); // tells express to look in app/static for css, img, or js files
+app.use(express.json())
 
 const db = require("./models");
 db.sequelize.sync();
@@ -51,6 +52,7 @@ passport.use(new GitHubStrategy({
 }))
 
 //Requiring the routes
+
 var routes = require("./app/routes/routes");
 app.use('/booksinspace', routes);
 
