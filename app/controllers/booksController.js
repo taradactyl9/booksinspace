@@ -116,27 +116,126 @@ exports.rating_update_patch = function(req, res) {
 
 // Review a book on POST
 exports.review_create_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Book review create POST')
-};
+  if (!req.body.status) {
+    res.status(400).send({
+        message: "No review saved."
+    });
+    return;
+  }
+
+  const { title } = req.body;
+  const { user_id } = req.body;
+  const { date_read } = req.body
+  const { status } = req.body
+
+
+  const newBook = db.Books.create({
+   title,
+   user_id,
+   date_read,
+   status
+  })
+  res.send(
+    'This review has been saved.'
+  )
+  };
 
 // Change a book review on UPDATE
 exports.review_update_patch = function(req, res) {
-  res.send('NOT IMPLEMENTED: Book review update PATCH')
+  if (!req.body.status) {
+    res.status(400).send({
+        message: "No changes saved."
+    });
+    return;
+  }
+
+  const { title } = req.body;
+  const { user_id } = req.body;
+  const { date_read } = req.body
+  const { status } = req.body
+
+
+  const newBook = db.Books.update({
+   title,
+   user_id,
+   date_read,
+   status
+  })
+  res.send(
+    'This review has been updated.')
 };
 
 // Add a book read date on POST
 exports.readdate_create_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Book date create POST')
+  if (!req.body.status) {
+    res.status(400).send({
+        message: ""
+    });
+    return;
+  }
+
+  const { title } = req.body;
+  const { user_id } = req.body;
+  const { date_read } = req.body
+  const { status } = req.body
+
+
+  const newBook = db.Books.create({
+   title,
+   user_id,
+   date_read,
+   status
+  })
+  res.send('This book has been saved to your shelf.')
+
 };
 
 // Change a book read date on UPDATE
 exports.readdate_update_patch = function(req, res) {
-  res.send('NOT IMPLEMENTED: Book date update PATCH')
+  if (!req.body.status) {
+    res.status(400).send({
+        message: ""
+    });
+    return;
+  }
+
+  const { title } = req.body;
+  const { user_id } = req.body;
+  const { date_read } = req.body
+  const { status } = req.body
+
+
+  const newBook = db.Books.update({
+   title,
+   user_id,
+   date_read,
+   status
+  })
+  res.send('This book has been updated.')
 };
 
 // Remove a book from shelf
 exports.book_delete_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Book delete POST')
+  if (!req.body.status) {
+    res.status(400).send({
+        message: "No changes made."
+    });
+    return;
+  }
+
+  const { title } = req.body;
+  const { user_id } = req.body;
+  const { date_read } = req.body
+  const { status } = req.body
+
+
+  const newBook = db.Books.delete({
+   title,
+   user_id,
+   date_read,
+   status
+  })
+  res.send('This book has been removed.')
 };
 
 
@@ -160,4 +259,4 @@ exports.book_delete_post = function(req, res) {
     //Rate a book - Patch Request
 
     //Add written review - Patch request
-}
+
