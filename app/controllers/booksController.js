@@ -24,7 +24,10 @@ const Sequelize = require('sequelize');
 
   const newBook = db.Books.create({
    title,
-   user_id
+   user_id,
+   date_read,
+   status
+
   })
   res.send(
     'This book has been added!'
@@ -33,24 +36,82 @@ const Sequelize = require('sequelize');
 
 // Mark it as Read/Want to read on UPDATE
 exports.books_update_patch = function(req, res) {
-  const book_id = req.params.book_id;
-  Books.update({
-  title: req.body.title,
-  user_id: req.body.user_id,
-  date_read: req.body.date_read,
-  status: req.body.status}, {where: {status: req.params.status} }).then(() => {
-    res.status(200).send("updated book status = " + status);
-  });
+  if (!req.body.status) {
+    res.status(400).send({
+        message: "Must choose shelf option"
+    });
+    return;
+  }
+
+  const { title } = req.body;
+  const { user_id } = req.body;
+  const { date_read } = req.body
+  const { status } = req.body
+
+
+  const newBook = db.Books.update({
+   title,
+   user_id,
+   date_read,
+   status
+  })
+  res.send(
+    'This book has been added to shelf!'
+  )
+};
  
 
 // Rate a book 1st time on POST
 exports.rate_create_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Book rating CREATE')
-};
+  if (!req.body.status) {
+    res.status(400).send({
+        message: "No rating selected"
+    });
+    return;
+  }
+
+  const { title } = req.body;
+  const { user_id } = req.body;
+  const { date_read } = req.body
+  const { status } = req.body
+
+
+  const newBook = db.Books.post({
+   title,
+   user_id,
+   date_read,
+   status
+  })
+  res.send(
+    'This book has been added to shelf!'
+  )
+  };
 
 // Change a book rating on UPDATE
 exports.rating_update_patch = function(req, res) {
-  res.send('NOT IMPLEMENTED: Book rating update PATCH')
+  if (!req.body.status) {
+    res.status(400).send({
+        message: "No rating selected"
+    });
+    return;
+  }
+
+  const { title } = req.body;
+  const { user_id } = req.body;
+  const { date_read } = req.body
+  const { status } = req.body
+
+
+  const newBook = db.Books.update({
+   title,
+   user_id,
+   date_read,
+   status
+  })
+  res.send(
+    'Book has been updated.'
+  )
+
 };
 
 // Review a book on POST
