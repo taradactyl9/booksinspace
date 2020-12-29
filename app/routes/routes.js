@@ -10,6 +10,11 @@ var books_controller = require('../controllers/booksController');
 // var users_controller = require('../controllers/usersController');
 // var wanttoread_controller = require('../controllers/wanttoreadController');
 
+//GET home page
+router.get('/', (req, res) => {
+    res.render('index');
+});
+
 /// BOOK ROUTES ///
 
 //test route 
@@ -24,7 +29,7 @@ router.get('/book', (req, res) => {
 router.post('/books', books_controller.books_create_post);
 
 //Mark as Read/Want to Read on update
-router.patch('/books/:book_id', books_controller.books_update_patch);
+router.patch('/books/:id', books_controller.books_update_patch);
 
 // //Rate a book - Post
 // router.post('/books', books_controller.rate_create_post);
