@@ -47,6 +47,12 @@ exports.books_update_patch = function(req, res) { // TESTED & WORKING
 };
  
 
+// exports.shelves_controller.shelves_findAll_get = function(req, res) {
+//   const { user_id } = req.params;
+
+//   db.Books.
+// }
+
 // // Rate a book 1st time on POST
 // exports.rate_create_post = function(req, res) {
 //   if (!req.body.status) {
