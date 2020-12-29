@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     user_id: DataTypes.STRING,
     date_read: DataTypes.STRING,
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+    shelf_id: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Books',

@@ -56,10 +56,6 @@ passport.use(new GitHubStrategy({
 var routes = require("./app/routes/routes");
 app.use('/booksinspace', routes);
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
-
 app.listen(port, function() {
     console.log('Books in Space API is now listening on port 3000...');
 });

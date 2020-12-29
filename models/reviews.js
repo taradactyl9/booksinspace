@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.STRING,
     comment: DataTypes.STRING,
     rating: DataTypes.STRING,
-    min: 1,
-    max: 5,
+    // min: 1,
+    // max: 5,
     book_id: DataTypes.STRING,
     date_read: DataTypes.STRING
   }, {
