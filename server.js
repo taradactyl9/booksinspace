@@ -1,5 +1,6 @@
 const express = require("express");
-const ejs = require('ejs');
+const ejs = require('ejs'); // templating engine
+const expressLayouts = require('express-ejs-layouts'); // additional templating features
 const app = express();
 const port = 3000;
 const path = require('path'); // path needed to tell express to look for project folders inside of /app
@@ -12,9 +13,15 @@ dotenv.config();
 //Middleware
 
 app.set('views', path.join(__dirname, 'app/views')); // sets the views, or template layouts for ejs
+app.use(expressLayouts); // templating helper
+app.set('layout', './layouts/home'); // sets default layout for templates
 app.set('view engine', 'ejs'); // tells express to use ejs as templating engine
 app.use(express.static('app/static')); // tells express to look in app/static for css, img, or js files
 app.use(express.json())
+
+app.use(express.urlencoded({
+    extended: true
+})); // for use with form validation
 
 const db = require("./models");
 db.sequelize.sync();
@@ -26,8 +33,8 @@ const session = require('express-session');
 
 //Passport Session Setup 
 app.use(session({
-    secret:'abc123', 
-    resave: false, 
+    secret: 'abc123',
+    resave: false,
     saveUninitialized: false
 }));
 
@@ -47,7 +54,7 @@ passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: process.env.GITHUB_CALLBACK_URL
-}, function(accessToken, refreshToken, profile, done){
+}, function(accessToken, refreshToken, profile, done) {
     return done(null, profile);
 }))
 
@@ -63,4 +70,3 @@ app.get('/', (req, res) => {
 app.listen(port, function() {
     console.log('Books in Space API is now listening on port 3000...');
 });
-
