@@ -7,11 +7,16 @@ const books_controller = require('../controllers/booksController');
 // var read_controller = require('../controllers/readController');
 // var reviews_controller = require('../controllers/reviewsController');
 // var shelves_controller = require('../controllers/shelvesController');
-// var users_controller = require('../controllers/usersController');
+var users_controller = require('../controllers/usersController');
 // var wanttoread_controller = require('../controllers/wanttoreadController');
 
 //GET home page
 router.get('/', books_controller.bookHome);
+
+// USER ROUTES //
+
+//create a user
+router.post('/user', users_controller.user_create_post);
 
 /// BOOK ROUTES ///
 
@@ -24,7 +29,7 @@ router.get('/book', (req, res) => {
 // router.get('/users/:userID/shelves', shelves_controller.shelves_findAll_get);
 
 //Add a book - POST Request
-router.post('/books', books_controller.books_create_post);
+router.post('/books', books_controller.book_create_post);
 
 //Mark as Read/Want to Read on update
 router.patch('/books/:id', books_controller.books_update_patch);
@@ -38,8 +43,8 @@ router.patch('/books/:id', books_controller.books_update_patch);
 
 //router.patch("/", controller.update);
 
-//Delete a book from shelf - delete request
+//Remove a book from shelf - delete request
 
-//router.delete("/", controller.delete);
+router.delete("/books/:id/:shelf_id", books_controller.book_delete_post);
 
 module.exports = router;

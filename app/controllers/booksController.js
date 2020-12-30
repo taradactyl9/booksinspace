@@ -6,6 +6,28 @@ const Sequelize = require('sequelize');
 // db.books.belongsTo(db.users);
 // var primaryId = 1;
 
+
+//Books Table
+// Post a book - Tested and Working
+
+exports.book_create_post = function(req, res) {
+if (!req.body.title) {
+  res.status(400).send({
+      message: "Book can not be empty!"
+  });
+  return;
+}
+
+const { title, user_id, date_read, status, shelf_id } = req.body;
+
+const newBook = db.Books.create({
+  title,
+  user_id,
+  date_read,
+  status,
+  shelf_id
+});
+
 //Shelves 
 
 exports.bookHome = (req, res) => {
@@ -39,6 +61,7 @@ exports.books_create_post = function(req, res) {
 };
 
 // Update a Shelved Book
+
 exports.books_update_patch = function(req, res) { // TESTED & WORKING
     const { id } = req.params;
 
@@ -51,6 +74,22 @@ exports.books_update_patch = function(req, res) { // TESTED & WORKING
     res.send('This book is updated');
 };
 
+
+
+// Delete a book from shelf
+
+exports.book_delete_post = function(req, res) {
+  const { id, shelf_id } = req.params;
+  
+  const deletedBook = db.Books.destroy({
+   where: {
+     id,
+     shelf_id
+   }
+  })
+  res.json(deletedBook)
+};
+ 
 
 // exports.shelves_controller.shelves_findAll_get = function(req, res) {
 //   const { user_id } = req.params;
@@ -137,103 +176,7 @@ exports.books_update_patch = function(req, res) { // TESTED & WORKING
 //   )
 //   };
 
-// // Change a book review on UPDATE
-// exports.review_update_patch = function(req, res) {
-//   if (!req.body.status) {
-//     res.status(400).send({
-//         message: "No changes saved."
-//     });
-//     return;
-//   }
 
-//   const { title } = req.body;
-//   const { user_id } = req.body;
-//   const { date_read } = req.body
-//   const { status } = req.body
-
-
-//   const newBook = db.Books.update({
-//    title,
-//    user_id,
-//    date_read,
-//    status
-//   })
-//   res.send(
-//     'This review has been updated.')
-// };
-
-// // Add a book read date on POST
-// exports.readdate_create_post = function(req, res) {
-//   if (!req.body.status) {
-//     res.status(400).send({
-//         message: ""
-//     });
-//     return;
-//   }
-
-//   const { title } = req.body;
-//   const { user_id } = req.body;
-//   const { date_read } = req.body
-//   const { status } = req.body
-
-
-//   const newBook = db.Books.create({
-//    title,
-//    user_id,
-//    date_read,
-//    status
-//   })
-//   res.send('This book has been saved to your shelf.')
-
-// };
-
-// // Change a book read date on UPDATE
-// exports.readdate_update_patch = function(req, res) {
-//   if (!req.body.status) {
-//     res.status(400).send({
-//         message: ""
-//     });
-//     return;
-//   }
-
-//   const { title } = req.body;
-//   const { user_id } = req.body;
-//   const { date_read } = req.body
-//   const { status } = req.body
-
-
-//   const newBook = db.Books.update({
-//    title,
-//    user_id,
-//    date_read,
-//    status
-//   })
-//   res.send('This book has been updated.')
-// };
-
-// // Remove a book from shelf
-// exports.book_delete_post = function(req, res) {
-//   if (!req.body.status) {
-//     res.status(400).send({
-//         message: "No changes made."
-//     });
-//     return;
-//   }
-
-//   const { title } = req.body;
-//   const { user_id } = req.body;
-//   const { date_read } = req.body
-//   const { status } = req.body
-
-
-//   const newBook = db.Books.delete({
-//    title,
-//    user_id,
-//    date_read,
-//    status
-//   })
-//   res.send('This book has been removed.')
-// };
 
 
 
