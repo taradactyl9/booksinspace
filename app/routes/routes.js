@@ -18,6 +18,9 @@ router.get('/', books_controller.bookHome);
 //create a user
 router.post('/user', users_controller.user_create_post);
 
+//Update a user
+router.patch('/user/:id', users_controller.user_update_patch);
+
 /// BOOK ROUTES ///
 
 //test route 
@@ -34,6 +37,10 @@ router.post('/books', books_controller.book_create_post);
 //Mark as Read/Want to Read on update
 router.patch('/books/:id', books_controller.books_update_patch);
 
+//Delete a book - delete request
+
+router.delete("/books/:id", books_controller.book_delete_post);
+
 // //Rate a book - Post
 // router.post('/books', books_controller.rate_create_post);
 
@@ -42,9 +49,5 @@ router.patch('/books/:id', books_controller.books_update_patch);
 //Add written review - Patch request
 
 //router.patch("/", controller.update);
-
-//Remove a book from shelf - delete request
-
-router.delete("/books/:id/:shelf_id", books_controller.book_delete_post);
 
 module.exports = router;
