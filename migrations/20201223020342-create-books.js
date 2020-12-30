@@ -12,13 +12,22 @@ module.exports = {
         type: Sequelize.STRING
       },
       user_id: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+                model: 'Users',
+                key: 'id',
+                as: 'user_id'
+        }
       },
       date_read: {
         type: Sequelize.STRING
       },
       shelf_id: {
         type: Sequelize.STRING
+      },
+      has_read: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

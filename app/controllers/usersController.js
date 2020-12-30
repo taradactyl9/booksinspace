@@ -3,8 +3,9 @@ const Users = db.Users;
 const Sequelize = require('sequelize');
 
 //User Table
-// user signs up - create userid, username, email, name, location, acct creation date
-exports.user_create_post = function(req, res) {
+
+// user signs up - tested and working
+exports.user_create_post = async function(req, res) {
     console.log(req.body);
         if(!req.body.email || !req.body.password) {
         res.status(400).send({
@@ -15,34 +16,31 @@ exports.user_create_post = function(req, res) {
 
     const { email, name, password } = req.body;
 
-    const newUser = db.User.create({
+    const newUser = await db.User.create({
         email,
         name, 
         password
     });
 
-    res.send(
-        "YAY! Your account is created!"
-    )
+    res.json(newUser)
 }
 
-// // user logs in 1st - create login date POST
-// exports.login_create_post = function(req, res) {
-//   res.send('NOT IMPLEMENTED: login date created')
-// };
+//update user - tested and working
 
-// // user logs in - update login date PATCH
-// exports.login_update_patch = function(req, res) {
-//   res.send('NOT IMPLEMENTED: user login date update PATCH')
-// };
+exports.user_update_patch = async function(req, res) {
+    // if (!req.body.username || !req.body.password) {
+    //     res.status(400).send({
+    //         message: "Need username and password"
+    //     })
+    // return;
+    // }
+    const { id } = req.params;
 
+    const updatedUser = await db.User.update(req.body, {
+        where: {
+            id
+        }
+    })
 
-// // user deletes acct POST
-// exports.user_deleteAll_post = function(req, res) {
-//   res.send('NOT IMPLEMENTED: user deletes acct POST')
-// };
-
-// // user visits profile page - retrieve user library GET
-// exports.user_retrieveAll_get = function(req, res) {
-//   res.send('NOT IMPLEMENTED: user retrieves all books for profile page GET')
-// }
+    res.json(updatedUser);
+}

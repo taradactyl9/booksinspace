@@ -21,34 +21,21 @@ router.get('/book-search', books_controller.bookSearch);
 //create a user
 router.post('/user', users_controller.user_create_post);
 
+//Update a user
+router.patch('/user/:id', users_controller.user_update_patch);
 
 /// BOOK ROUTES ///
 
-//test route 
-router.get('/book', (req, res) => {
-    res.send('this is the books route');
-})
+//GET User books
+router.get('/books/user/:user_id', books_controller.books_findOne_get);
 
-//GET user home page.
-// router.get('/users/:userID/shelves', shelves_controller.shelves_findAll_get);
-
-//Add a book - POST Request
+//Add a book 
 router.post('/books', books_controller.book_create_post);
 
 //Mark as Read/Want to Read on update
 router.patch('/books/:id', books_controller.books_update_patch);
 
-// //Rate a book - Post
-// router.post('/books', books_controller.rate_create_post);
-
-//router.patch("/", contoller.update);
-
-//Add written review - Patch request
-
-//router.patch("/", controller.update);
-
-//Remove a book from shelf - delete request
-
-router.delete("/books/:id/:shelf_id", books_controller.book_delete_post);
+//Delete a book 
+router.delete("/books/:id", books_controller.book_delete_post);
 
 module.exports = router;
