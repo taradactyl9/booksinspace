@@ -21,7 +21,7 @@ exports.bookSearch = async(req, res) => {
     try {
 
         let data = '';
-        const bookname = req.query.title.split(' ').join('+');
+        const bookname = req.query.booktitle.split(' ').join('+');
 
         const config = {
             method: 'get',
@@ -32,11 +32,10 @@ exports.bookSearch = async(req, res) => {
             data: data
         };
 
-        const bookAPI = await axios.request(options);
-        const bookData = movieAPI.data;
+        const bookAPI = await axios.request(config);
+        const bookData = bookAPI.data;
 
-        res.render('./partials/content', { bookData: moviesData.Search });
-        // return res.send(moviename);
+        res.render('./partials/content', { bookData: bookData.books });
 
     } catch (err) {
         if (err.response) {
