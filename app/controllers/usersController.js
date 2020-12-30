@@ -3,8 +3,9 @@ const Users = db.Users;
 const Sequelize = require('sequelize');
 
 //User Table
-// user signs up - create userid, username, email, name, location, acct creation date
-exports.user_create_post = function(req, res) {
+
+// user signs up - tested and working
+exports.user_create_post = async function(req, res) {
     console.log(req.body);
         if(!req.body.email || !req.body.password) {
         res.status(400).send({
@@ -15,18 +16,18 @@ exports.user_create_post = function(req, res) {
 
     const { email, name, password } = req.body;
 
-    const newUser = db.User.create({
+    const newUser = await db.User.create({
         email,
         name, 
         password
     });
 
-    res.send(
-        "YAY! Your account is created!"
-    )
+    res.json(newUser)
 }
 
-exports.user_update_patch = function(req, res) {
+//update user - tested and working
+
+exports.user_update_patch = async function(req, res) {
     // if (!req.body.username || !req.body.password) {
     //     res.status(400).send({
     //         message: "Need username and password"
@@ -35,11 +36,11 @@ exports.user_update_patch = function(req, res) {
     // }
     const { id } = req.params;
 
-    const updatedUser = db.User.update(req.body, {
+    const updatedUser = await db.User.update(req.body, {
         where: {
             id
         }
     })
 
-    res.send('Your user has been updated');
+    res.json(updatedUser);
 }
