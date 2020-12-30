@@ -1,5 +1,7 @@
 const express = require("express");
 const ejs = require('ejs');
+const expressLayouts = require('express-ejs-layouts');
+const favicon = require('serve-favicon');
 const app = express();
 const port = 3000;
 const path = require('path'); // path needed to tell express to look for project folders inside of /app
@@ -9,9 +11,16 @@ const sequelize = require("sequelize");
 const dotenv = require('dotenv');
 dotenv.config();
 
+app.use(express.urlencoded({
+    extended: true
+}));
+
 //Middleware
 
-app.set('views', path.join(__dirname, 'app/views')); // sets the views, or template layouts for ejs
+app.set('views', path.join(__dirname, 'app/views'));
+app.use(favicon(__dirname + '/app/static/img/favicon.ico')); // sets the views, or template layouts for ejs
+app.use(expressLayouts);
+app.set('layout', 'layouts/index');
 app.set('view engine', 'ejs'); // tells express to use ejs as templating engine
 app.use(express.static('app/static')); // tells express to look in app/static for css, img, or js files
 app.use(express.json())
@@ -26,8 +35,8 @@ const session = require('express-session');
 
 //Passport Session Setup 
 app.use(session({
-    secret:'abc123', 
-    resave: false, 
+    secret: 'abc123',
+    resave: false,
     saveUninitialized: false
 }));
 
@@ -47,16 +56,15 @@ passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: process.env.GITHUB_CALLBACK_URL
-}, function(accessToken, refreshToken, profile, done){
+}, function(accessToken, refreshToken, profile, done) {
     return done(null, profile);
 }))
 
 //Requiring the routes
 
 var routes = require("./app/routes/routes");
-app.use('/booksinspace', routes);
+app.use('/', routes); // Had to change this to root, otherwise folks would have had to go to http://localhost:3000/booksinspace to view the page
 
 app.listen(port, function() {
     console.log('Books in Space API is now listening on port 3000...');
 });
-
