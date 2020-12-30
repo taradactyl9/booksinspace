@@ -11,11 +11,15 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            Books.belongsTo(models.User, {
+                foreignKey: 'user_id',
+                onDelete: 'CASCADE'
+            });
         }
     };
     Books.init({
         title: DataTypes.STRING,
-        user_id: DataTypes.STRING,
+        user_id: DataTypes.INTEGER,
         date_read: DataTypes.STRING,
         status: DataTypes.STRING,
         shelf_id: DataTypes.STRING,
