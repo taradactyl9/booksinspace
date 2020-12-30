@@ -20,6 +20,9 @@ module.exports = {
       shelf_id: {
         type: Sequelize.STRING
       },
+      has_read: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
