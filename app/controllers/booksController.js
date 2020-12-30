@@ -28,6 +28,7 @@ const newBook = db.Books.create({
   shelf_id
 });
 
+}
 //Shelves 
 
 exports.bookHome = (req, res) => {
