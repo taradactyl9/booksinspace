@@ -10,50 +10,65 @@ exports.bookHome = (req, res) => {
 
 // Post a book - Tested and Working
 
-exports.book_create_post = function(req, res) {
-if (!req.body.title) {
-  res.status(400).send({
-      message: "Book can not be empty!"
+exports.book_create_post = async function(req, res) {
+  if (!req.body.title) {
+    res.status(400).send({
+        message: "Book can not be empty!"
+    });
+    return;
+  }
+
+  const { title, user_id, date_read, status, shelf_id, has_read } = req.body;
+
+  const newBook = await db.Books.create({
+    title,
+    user_id,
+    date_read,
+    status,
+    shelf_id,
+    has_read
   });
-  return;
+
+  res.json(newBook);
 }
 
-const { title, user_id, date_read, status, shelf_id } = req.body;
+// Update a Book - tested and working
 
-const newBook = db.Books.create({
-  title,
-  user_id,
-  date_read,
-  status,
-  shelf_id
-});
-
-}
-
-// Update a Book
-
-exports.books_update_patch = function(req, res) { // TESTED & WORKING
+exports.books_update_patch = async function(req, res) { // TESTED & WORKING
     const { id } = req.params;
 
-    const updatedBook = db.Books.update(req.body, {
+    const updatedBook = await db.Books.update(req.body, {
         where: {
             id
         }
     });
 
-    res.send('This book is updated');
+    res.json(updatedBook);
 };
 
-// Delete a book 
+// Delete a book - tested and working
 
-exports.book_delete_post = function(req, res) {
+exports.book_delete_post = async function(req, res) {
   const { id } = req.params;
   
-  const deletedBook = db.Books.destroy({
+  const deletedBook = await db.Books.destroy({
    where: {
      id
    }
   })
-  res.json(deletedBook)
+  res.json(deletedBook);
 };
- 
+
+//Get all of a users books - tested and working
+
+exports.books_findOne_get = async function(req, res) {
+  const { user_id } = req.params;
+
+  const savedBooksByUser = await db.Books.findAll({
+    where: {
+      user_id
+    }
+  })
+  
+  res.json(savedBooksByUser)
+};
