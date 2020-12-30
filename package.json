@@ -4,6 +4,7 @@
   "description": "Backend book cataloging software",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "bootswatch": "^4.5.3",
     "cors": "^2.8.5",

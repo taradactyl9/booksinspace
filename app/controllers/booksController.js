@@ -1,15 +1,53 @@
+const axios = require("axios");
+const apikey = process.env.BOOKAPIKEY;
+
 const db = require("../../models");
 const Books = db.Books;
 const Sequelize = require('sequelize');
 
-//Home page
-
 exports.bookHome = (req, res) => {
-    res.render('layouts/index');
+    res.render('./partials/content');
 }
 
-// Post a book - Tested and Working
+exports.bookSearch = async(req, res) => {
 
+    try {
+
+        let data = '';
+        const bookname = req.query.booktitle.split(' ').join('+');
+
+        const config = {
+            method: 'get',
+            url: `https://api2.isbndb.com/books/${bookname}?page=1&pageSize=20&beta=0`,
+            headers: {
+                'Authorization': `${apikey}`
+            },
+            data: data
+        };
+
+        const bookAPI = await axios.request(config);
+        const bookData = bookAPI.data;
+
+        res.render('partials/booksearch', { bookData: bookData.books });
+
+
+    } catch (err) {
+        if (err.response) {
+            console.log(err.response.data);
+        } else if (err.request) {
+            console.log(err.request);
+        } else {
+            console.error("Error", err.message);
+        }
+    }
+
+    res.end();
+
+};
+
+//Books Table
+
+// Post Book - Tested and Working
 exports.book_create_post = async function(req, res) {
   if (!req.body.title) {
     res.status(400).send({
@@ -64,6 +102,7 @@ exports.book_delete_post = async function(req, res) {
 exports.books_findOne_get = async function(req, res) {
   const { user_id } = req.params;
 
+
   const savedBooksByUser = await db.Books.findAll({
     where: {
       user_id
@@ -72,3 +111,4 @@ exports.books_findOne_get = async function(req, res) {
   
   res.json(savedBooksByUser)
 };
+

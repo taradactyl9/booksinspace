@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-12 results">
+        <div class="card-layouts">
+
+            <% if (bookData) { %>
+                <% bookData.forEach(function(item){ %>
+                    <div class="card-container">
+                        <h5>
+                            <%= item.title %>
+                        </h5>
+                        <% if (item.image == "N/A") { %>
+                            <img src="img/movie-poster.png" alt="<%= item.title %>" width="200" height="248" />
+
+                            <input id="movie-saved" type="checkbox" name="movie-saved" value="<% item.title %>" onclick="save()"><label for="<% item.Title %>">Save to book shelf</label>
+
+                            <% } else { %>
+                                <img src="<%= item.image %>" alt="<%= item.image %>" width="200" height="248" />
+
+                                <input id="movie-saved" type="checkbox" name="movie-saved" value="<% item.title %>" onclick="save()"><label for="<% item.title %>">Save to book shelf</label>
+                                <% } %>
+                    </div>
+                    <% }) %>
+
+                        <% } else { %>
+                            <p>Search for a book!</p>
+                            <% } %>
+
+        </div>
+    </div>
+</div>
