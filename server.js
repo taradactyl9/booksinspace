@@ -16,12 +16,13 @@ app.use(express.urlencoded({
 }));
 
 //Middleware
-
+app.use(expressLayouts);
+app.set('layout', './layouts/index');
+app.set('view options', { layout: './layouts/layout.ejs' });
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'app/views'));
 app.use(favicon(__dirname + '/app/static/img/favicon.ico')); // sets the views, or template layouts for ejs
-app.use(expressLayouts);
-app.set('layout', 'layouts/index');
-app.set('view engine', 'ejs'); // tells express to use ejs as templating engine
+// tells express to use ejs as templating engine
 app.use(express.static('app/static')); // tells express to look in app/static for css, img, or js files
 app.use(express.json())
 
