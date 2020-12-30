@@ -6,8 +6,10 @@ const Sequelize = require('sequelize');
 // db.books.belongsTo(db.users);
 // var primaryId = 1;
 
+exports.bookHome = (req, res) => {
+    res.render('layouts/index');
+}
 
-//Books Table
 // Post a book - Tested and Working
 
 exports.book_create_post = function(req, res) {
@@ -28,15 +30,8 @@ const newBook = db.Books.create({
   shelf_id
 });
 
-//Shelves 
-
-exports.bookHome = (req, res) => {
-    res.render('layouts/index');
 }
 
-
-
-//Books Table
 // Save book to shelves on POST - Tested and Working
 exports.books_create_post = function(req, res) {
     if (!req.body.title) {
@@ -46,13 +41,14 @@ exports.books_create_post = function(req, res) {
         return;
     }
 
-    const { title, user_id, date_read, status } = req.body;
+    const { title, user_id, date_read, status, has_read } = req.body;
 
     const newBook = db.Books.create({
         title,
         user_id,
         date_read,
-        status
+        status,
+        has_read
     });
 
     res.send(
@@ -60,7 +56,7 @@ exports.books_create_post = function(req, res) {
     )
 };
 
-// Update a Shelved Book
+// Update a Book
 
 exports.books_update_patch = function(req, res) { // TESTED & WORKING
     const { id } = req.params;
@@ -74,23 +70,19 @@ exports.books_update_patch = function(req, res) { // TESTED & WORKING
     res.send('This book is updated');
 };
 
-
-
 // Delete a book from shelf
 
 exports.book_delete_post = function(req, res) {
-  const { id, shelf_id } = req.params;
+  const { id } = req.params;
   
   const deletedBook = db.Books.destroy({
    where: {
-     id,
-     shelf_id
+     id
    }
   })
   res.json(deletedBook)
 };
  
-
 // exports.shelves_controller.shelves_findAll_get = function(req, res) {
 //   const { user_id } = req.params;
 
@@ -198,4 +190,4 @@ exports.book_delete_post = function(req, res) {
 
 //     //Rate a book - Patch Request
 
-//     //Add written review - Patch request
+//     //Add written review - Patch
