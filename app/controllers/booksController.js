@@ -8,44 +8,49 @@ const Sequelize = require('sequelize');
 
 //Shelves 
 
+exports.bookHome = (req, res) => {
+    res.render('layouts/index');
+}
+
+
 
 //Books Table
 // Save book to shelves on POST - Tested and Working
 exports.books_create_post = function(req, res) {
-if (!req.body.title) {
-  res.status(400).send({
-      message: "Book can not be empty!"
-  });
-  return;
-}
+    if (!req.body.title) {
+        res.status(400).send({
+            message: "Book can not be empty!"
+        });
+        return;
+    }
 
-const { title, user_id, date_read, status } = req.body;
+    const { title, user_id, date_read, status } = req.body;
 
-const newBook = db.Books.create({
-  title,
-  user_id,
-  date_read,
-  status
-});
+    const newBook = db.Books.create({
+        title,
+        user_id,
+        date_read,
+        status
+    });
 
-res.send(
-  'This book has been added!'
-)
+    res.send(
+        'This book has been added!'
+    )
 };
 
 // Update a Shelved Book
 exports.books_update_patch = function(req, res) { // TESTED & WORKING
-  const { id } = req.params;
-  
-  const updatedBook = db.Books.update(req.body, {
-    where: {
-      id
-    }
-  });
+    const { id } = req.params;
 
-  res.send('This book is updated');
+    const updatedBook = db.Books.update(req.body, {
+        where: {
+            id
+        }
+    });
+
+    res.send('This book is updated');
 };
- 
+
 
 // exports.shelves_controller.shelves_findAll_get = function(req, res) {
 //   const { user_id } = req.params;
@@ -239,9 +244,9 @@ exports.books_update_patch = function(req, res) { // TESTED & WORKING
 
 
 //  //THESE ARE THE ROUTES THAT NEED CONTROLLERS
- 
+
 //     //Add a book - POST Request
-    
+
 //     //Retrieve your Shelf - GET Request
 
 //     //Add to shelf as want to read - POST route
@@ -251,4 +256,3 @@ exports.books_update_patch = function(req, res) { // TESTED & WORKING
 //     //Rate a book - Patch Request
 
 //     //Add written review - Patch request
-

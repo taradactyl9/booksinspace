@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Require controller modules.
-var books_controller = require('../controllers/booksController');
+const books_controller = require('../controllers/booksController');
 // var read_controller = require('../controllers/readController');
 // var reviews_controller = require('../controllers/reviewsController');
 // var shelves_controller = require('../controllers/shelvesController');
@@ -11,9 +11,7 @@ var books_controller = require('../controllers/booksController');
 // var wanttoread_controller = require('../controllers/wanttoreadController');
 
 //GET home page
-router.get('/', (req, res) => {
-    res.render('index');
-});
+router.get('/', books_controller.bookHome);
 
 /// BOOK ROUTES ///
 
