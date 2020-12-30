@@ -1,3 +1,6 @@
+const axios = require("axios");
+const apikey = process.env.BOOKAPIKEY;
+
 const db = require("../../models");
 const Books = db.Books;
 const Sequelize = require('sequelize');
@@ -13,6 +16,41 @@ exports.bookHome = (req, res) => {
 }
 
 
+exports.bookSearch = async(req, res) => {
+
+    try {
+
+        let data = '';
+        const bookname = req.query.title.split(' ').join('+');
+
+        const config = {
+            method: 'get',
+            url: `https://api2.isbndb.com/books/${bookname}?page=1&pageSize=20&beta=0`,
+            headers: {
+                'Authorization': `${apikey}`
+            },
+            data: data
+        };
+
+        const bookAPI = await axios.request(options);
+        const bookData = movieAPI.data;
+
+        res.render('./partials/content', { bookData: moviesData.Search });
+        // return res.send(moviename);
+
+    } catch (err) {
+        if (err.response) {
+            console.log(err.response.data);
+        } else if (err.request) {
+            console.log(err.request);
+        } else {
+            console.error("Error", err.message);
+        }
+    }
+
+    res.end();
+
+};
 
 //Books Table
 // Save book to shelves on POST - Tested and Working

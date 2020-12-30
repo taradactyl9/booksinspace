@@ -13,6 +13,8 @@ const books_controller = require('../controllers/booksController');
 //GET home page
 router.get('/', books_controller.bookHome);
 
+router.get('/book-search', books_controller.bookSearch);
+
 /// BOOK ROUTES ///
 
 //test route 
