@@ -13,10 +13,14 @@ var users_controller = require('../controllers/usersController');
 //GET home page
 router.get('/', books_controller.bookHome);
 
+//GET book from isbndb api
+router.get('/book-search', books_controller.bookSearch);
+
 // USER ROUTES //
 
 //create a user
 router.post('/user', users_controller.user_create_post);
+
 
 /// BOOK ROUTES ///
 

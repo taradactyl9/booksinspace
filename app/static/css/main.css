@@ -36,6 +36,18 @@ h3 {
     display: inline-block;
 }
 
+h5 {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+label {
+    margin-bottom: .5rem;
+    margin-left: .5rem;
+}
+
 
 /* ==================================================== */
 
@@ -150,4 +162,21 @@ button.register-btn {
 
 .signin {
     margin: 24px 0;
+}
+
+.card-layouts {
+    display: grid;
+    grid-column-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+}
+
+.card-container {
+    display: inline-block;
+    margin: 30px;
+}
+
+img {
+    max-width: 200px;
+    max-height: 248px;
+    display: block;
 }
