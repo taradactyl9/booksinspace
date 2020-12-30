@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         date_read: DataTypes.STRING,
         status: DataTypes.STRING,
         shelf_id: DataTypes.STRING,
+        has_read: DataTypes.BOOLEAN,
     }, {
         sequelize,
         modelName: 'Books',
