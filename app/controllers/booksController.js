@@ -12,7 +12,7 @@ const Sequelize = require('sequelize');
 //Shelves 
 
 exports.bookHome = (req, res) => {
-    res.render('layouts/index');
+    res.render('./partials/content');
 }
 
 
@@ -35,7 +35,8 @@ exports.bookSearch = async(req, res) => {
         const bookAPI = await axios.request(config);
         const bookData = bookAPI.data;
 
-        res.render('./partials/content', { bookData: bookData.books });
+        res.render('partials/booksearch', { bookData: bookData.books });
+
 
     } catch (err) {
         if (err.response) {
