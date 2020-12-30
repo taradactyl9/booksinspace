@@ -1,14 +1,30 @@
-// // Global variables for our prototype
-// var users = require("../../models/users");
-// // db.users.hasMany(db.books);
-// // Used to assign unique ids to each order
-// var primaryId = 1;
+const db = require("../../models");
+const Users = db.Users;
+const Sequelize = require('sequelize');
 
-// //User Table
-// // user signs up - create userid, username, email, name, location, acct creation date
-// exports.user_create_post = function(req, res) {
-//   res.send ('NOT IMPLEMENTED: user acct create POST')
-// };
+//User Table
+// user signs up - create userid, username, email, name, location, acct creation date
+exports.user_create_post = function(req, res) {
+    console.log(req.body);
+        if(!req.body.email || !req.body.password) {
+        res.status(400).send({
+            message: "You need an email & password to create an account!"
+        });
+    return;
+    }
+
+    const { email, name, password } = req.body;
+
+    const newUser = db.User.create({
+        email,
+        name, 
+        password
+    });
+
+    res.send(
+        "YAY! Your account is created!"
+    )
+}
 
 // // user logs in 1st - create login date POST
 // exports.login_create_post = function(req, res) {
