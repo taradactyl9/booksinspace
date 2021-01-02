@@ -127,16 +127,16 @@ exports.books_hasReadTrue_get = async function(req, res) {
   res.json(readBooksByUser)
 };
 
-//find a user's has_read = true books 
+//find a user's has_read = false books 
 exports.books_hasReadFalse_get = async function(req, res) {
   const { user_id, has_read } = req.params;
 
-  const savedBooksByUser = await db.Books.findAll({
+  const unreadBooksByUser = await db.Books.findAll({
     where: {
       user_id,
-      has_read: true
+      has_read: false
     }
   })
   
-  res.json(savedBooksByUser)
+  res.json(unreadBooksByUser)
 };

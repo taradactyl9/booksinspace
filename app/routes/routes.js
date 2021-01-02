@@ -5,10 +5,10 @@ const router = express.Router();
 
 // Require controller modules.
 const books_controller = require('../controllers/booksController');
+const users_controller = require('../controllers/usersController');
 // var read_controller = require('../controllers/readController');
 // var reviews_controller = require('../controllers/reviewsController');
 // var shelves_controller = require('../controllers/shelvesController');
-var users_controller = require('../controllers/usersController');
 // var wanttoread_controller = require('../controllers/wanttoreadController');
 
 //GET home page
@@ -34,7 +34,7 @@ router.get('/books/user/:user_id', books_controller.books_findOneUser_get);
 router.get('/books/user/:user_id/read', books_controller.books_hasReadTrue_get);
 
 //GET User has_read = false books
-router.get('/books/user/:user_id/read', books_controller.books_hasReadFalse_get);
+router.get('/books/user/:user_id/unread', books_controller.books_hasReadFalse_get);
 
 //Add a book 
 router.post('/books', books_controller.book_create_post);
@@ -42,7 +42,7 @@ router.post('/books', books_controller.book_create_post);
 //Mark as Read/Want to Read on update
 router.patch('/books/:id', books_controller.books_update_patch);
 
-//Delete a book - tested and working!
+//Delete a book 
 router.delete("/books/:id", books_controller.book_delete_post);
 
 module.exports = router;
