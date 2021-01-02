@@ -3,7 +3,7 @@ const apikey = process.env.BOOKAPIKEY;
 
 const db = require("../../models");
 const Books = db.Books;
-const Sequelize = require('sequelize');
+//const { Op } = require('sequelize');
 
 exports.bookHome = (req, res) => {
     res.render('./partials/content');
@@ -94,12 +94,13 @@ exports.book_delete_post = async function(req, res) {
      id
    }
   })
+
   res.json(deletedBook);
 };
 
-//Get all of a users books - tested and working
+//get all of users books, both true and false - tested and working
 
-exports.books_findOne_get = async function(req, res) {
+exports.books_findOneUser_get = async function(req, res) {
   const { user_id } = req.params;
 
 
@@ -112,3 +113,30 @@ exports.books_findOne_get = async function(req, res) {
   res.json(savedBooksByUser)
 };
 
+//find a user's has_read = true books 
+exports.books_hasReadTrue_get = async function(req, res) {
+  const { user_id, has_read } = req.params;
+
+  const readBooksByUser = await db.Books.findAll({
+    where: {
+      user_id,
+      has_read: true
+    }
+  })
+  
+  res.json(readBooksByUser)
+};
+
+//find a user's has_read = false books 
+exports.books_hasReadFalse_get = async function(req, res) {
+  const { user_id, has_read } = req.params;
+
+  const unreadBooksByUser = await db.Books.findAll({
+    where: {
+      user_id,
+      has_read: false
+    }
+  })
+  
+  res.json(unreadBooksByUser)
+};
