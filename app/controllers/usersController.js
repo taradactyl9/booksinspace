@@ -7,7 +7,7 @@ const Sequelize = require('sequelize');
 // user signs up - tested and working
 exports.user_create_post = async function(req, res) {
     console.log(req.body);
-        if(!req.body.email || !req.body.password) {
+    if(!req.body.email || !req.body.password) {
         res.status(400).send({
             message: "You need an email & password to create an account!"
         });
