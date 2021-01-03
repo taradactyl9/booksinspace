@@ -11,12 +11,12 @@
                         <% if (item.image == "N/A") { %>
                             <img src="img/movie-poster.png" alt="<%= item.title %>" width="200" height="248" />
 
-                            <input id="movie-saved" type="checkbox" name="movie-saved" value="<% item.title %>"><label for="<% item.Title %>">Save to book shelf</label>
+                            <input id="movie-saved" type="checkbox" name="movie-saved" value="<% item.title %>"><label for="<% item.Title %>">Save to bookshelf</label>
 
                             <% } else { %>
                                 <img src="<%= item.image %>" alt="<%= item.image %>" width="200" height="248" />
 
-                                <input id="movie-saved" type="checkbox" name="movie-saved" value="<% item.title %>"><label for="<% item.title %>">Save to book shelf</label>
+                                <input id="movie-saved" type="checkbox" name="movie-saved" value="<% item.title %>"><label for="<% item.title %>">Save to bookshelf</label>
                                 <% } %>
                     </div>
                     <% }) %>
