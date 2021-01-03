@@ -4,21 +4,52 @@ const Sequelize = require('sequelize');
 
 //User Table
 
+
+exports.user_profile_page = async(req, res) => {
+
+    try {
+        const results = res.render('./partials/userprofile');
+    } catch (err) {
+        if (err.response) {
+            console.log(err.response.data);
+        } else if (err.request) {
+            console.log(err.request);
+        } else {
+            console.error("Error", err.message);
+        }
+    }
+
+}
+
+exports.user_register_page = (req, res) => {
+    try {
+        res.render('./partials/register');
+    } catch (err) {
+        if (err.response) {
+            console.log(err.response.data);
+        } else if (err.request) {
+            console.log(err.request);
+        } else {
+            console.error("Error", err.message);
+        }
+    }
+}
+
 // user signs up - tested and working
 exports.user_create_post = async function(req, res) {
     console.log(req.body);
-    if(!req.body.email || !req.body.password) {
+    if (!req.body.email || !req.body.password) {
         res.status(400).send({
             message: "You need an email & password to create an account!"
         });
-    return;
+        return;
     }
 
     const { email, name, password } = req.body;
 
     const newUser = await db.User.create({
         email,
-        name, 
+        name,
         password
     });
 

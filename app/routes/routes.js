@@ -19,6 +19,12 @@ router.get('/book-search', books_controller.bookSearch);
 
 // USER ROUTES //
 
+//user profile page
+router.get('/userprofile', users_controller.user_profile_page);
+
+// register a new user
+router.get('/register', users_controller.user_register_page);
+
 //create a user
 router.post('/user', users_controller.user_create_post);
 
@@ -44,5 +50,9 @@ router.patch('/books/:id', books_controller.books_update_patch);
 
 //Delete a book 
 router.delete("/books/:id", books_controller.book_delete_post);
+
+router.get("/terms", (req, res) => {
+    res.render("./partials/terms")
+})
 
 module.exports = router;
