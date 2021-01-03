@@ -1,195 +1,164 @@
-/* ==================================================== */
-
-
-/* =================== MEDIA QUERIES ================== */
-
-
-/* ==================================================== */
-
-@media screen and (max-width: 650px) {
-    .col {
-        width: 100%;
-        margin-top: 0;
+    /* ==================================================== */
+    /* =================== MEDIA QUERIES ================== */
+    /* ==================================================== */
+    
+    @media screen and (max-width: 650px) {
+        .col {
+            width: 100%;
+            margin-top: 0;
+        }
+        /* hide the vertical line */
+        .vl {
+            display: none;
+        }
+        /* show the hidden text on small screens */
+        .hide-md-lg {
+            display: block;
+            text-align: center;
+        }
     }
-    /* hide the vertical line */
-    .vl {
-        display: none;
+    /* ==================================================== */
+    /* ================== DEFAULT ELEMENTS ================ */
+    /* ==================================================== */
+    
+    h3 {
+        padding-top: 12px;
+        display: inline-block;
     }
-    /* show the hidden text on small screens */
-    .hide-md-lg {
+    
+    h5 {
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    label {
+        margin-bottom: .5rem;
+        margin-left: .5rem;
+    }
+    
+    img {
+        max-width: 200px;
+        max-height: 248px;
         display: block;
-        text-align: center;
     }
-}
-
-
-/* ==================================================== */
-
-
-/* ================== DEFAULT ELEMENTS ================ */
-
-
-/* ==================================================== */
-
-h3 {
-    padding-top: 12px;
-    display: inline-block;
-}
-
-h5 {
-    font-size: 1rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-label {
-    margin-bottom: .5rem;
-    margin-left: .5rem;
-}
-
-img {
-    max-width: 200px;
-    max-height: 248px;
-    display: block;
-}
-
-
-/* ==================================================== */
-
-
-/* ================ MAIN CONTENT STYLES =============== */
-
-
-/* ==================================================== */
-
-.form-inline {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: nowrap;
-    flex-flow: nowrap;
-}
-
-.jumbotron {
-    background-image: url('../img/books.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
-}
-
-.lead a {
-    text-shadow: none;
-}
-
-
-/* ==================================================== */
-
-
-/* ================ LOGIN FORMS STYLES =============== */
-
-
-/* ==================================================== */
-
-.login-container {
-    box-sizing: border-box;
-    margin: 20px auto;
-}
-
-.social-container .row {
-    display: inline-block;
-}
-
-.social-container {
-    position: relative;
-    border-radius: 5px;
-    padding: 20px 0 30px 0;
-}
-
-input,
-.social-btn {
-    width: 100%;
-    /* padding: 12px; */
-    border-radius: 4px;
-    margin: 5px 0;
-    opacity: 0.85;
-    display: inline-block;
-    /* font-size: 17px;
+    /* ==================================================== */
+    /* ================ MAIN CONTENT STYLES =============== */
+    /* ==================================================== */
+    
+    .form-inline {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-flow: nowrap;
+        flex-flow: nowrap;
+    }
+    
+    .jumbotron {
+        background-image: url('../img/books.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+    }
+    
+    .lead a {
+        text-shadow: none;
+    }
+    /* ==================================================== */
+    /* ================ LOGIN FORMS STYLES =============== */
+    /* ==================================================== */
+    
+    .login-container {
+        box-sizing: border-box;
+        margin: 20px auto;
+    }
+    
+    .social-container .row {
+        display: inline-block;
+    }
+    
+    .social-container {
+        position: relative;
+        border-radius: 5px;
+        padding: 20px 0 30px 0;
+    }
+    
+    input,
+    .social-btn {
+        width: 100%;
+        /* padding: 12px; */
+        border-radius: 4px;
+        margin: 5px 0;
+        opacity: 0.85;
+        display: inline-block;
+        /* font-size: 17px;
     line-height: 20px;
     text-decoration: none; */
-}
-
-
-/* input:hover,
+    }
+    /* input:hover,
 .btn:hover {
     opacity: 1;
 } */
-
-.fb {
-    background-color: #3B5998;
-    color: white;
-}
-
-.twitter {
-    background-color: #55ACEE;
-    color: white;
-}
-
-.google {
-    background-color: #dd4b39;
-    color: white;
-}
-
-
-/* ==================================================== */
-
-
-/* ================ REGISTER FORMS STYLES =============== */
-
-
-/* ==================================================== */
-
-.signup-container {
-    margin: 20px auto;
-}
-
-.register-col {
-    background-image: url('../img/books.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position;
-    center right;
-    width: 550px;
-    height: 534px;
-}
-
-button.register-btn {
-    width: 100%;
-}
-
-.signin {
-    margin: 24px 0;
-}
-
-.card-layouts {
-    display: grid;
-    grid-column-gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
-}
-
-.card-container {
-    display: inline-block;
-    margin: 30px;
-}
-
-
-/* ==================================================== */
-
-
-/* =================== USER PROFILE ================== */
-
-
-/* ==================================================== */
-
-.user-container>.row {
-    flex-wrap: nowrap;
-}
+    
+    .fb {
+        background-color: #3B5998;
+        color: white;
+    }
+    
+    .twitter {
+        background-color: #55ACEE;
+        color: white;
+    }
+    
+    .google {
+        background-color: #dd4b39;
+        color: white;
+    }
+    /* ==================================================== */
+    /* ================ REGISTER FORMS STYLES =============== */
+    /* ==================================================== */
+    
+    .signup-container {
+        margin: 20px auto;
+    }
+    
+    .register-col {
+        background-image: url('../img/books.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position;
+        center right;
+        width: 550px;
+        height: 534px;
+    }
+    
+    button.register-btn {
+        width: 100%;
+    }
+    
+    .signin {
+        margin: 24px 0;
+    }
+    
+    .card-layouts {
+        display: grid;
+        grid-column-gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+    }
+    
+    .card-container {
+        display: inline-block;
+        margin: 30px;
+    }
+    /* ==================================================== */
+    /* =================== USER PROFILE ================== */
+    /* ==================================================== */
+    
+    .user-container>.row {
+        flex-wrap: nowrap;
+    }
+    
+    .card-group>.card {
+        flex: none;
+        justify-content: space-between;
+    }
