@@ -23,7 +23,7 @@ module.exports = {
       date_read: {
         type: Sequelize.STRING
       },
-      shelf_id: {
+      image: {
         type: Sequelize.STRING
       },
       has_read: {
