@@ -19,6 +19,12 @@ router.get('/book-search', books_controller.bookSearch);
 
 // USER ROUTES //
 
+//user profile page
+router.get('/userprofile', users_controller.user_profile_page);
+
+// register a new user
+router.get('/register', users_controller.user_register_page);
+
 //create a user
 router.post('/user', users_controller.user_create_post);
 
