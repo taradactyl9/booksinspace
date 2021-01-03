@@ -5,10 +5,10 @@ const Sequelize = require('sequelize');
 //User Table
 
 
-exports.user_profile_page = (req, res) => {
+exports.user_profile_page = async(req, res) => {
 
     try {
-        res.render('./partials/userprofile');
+        const results = res.render('./partials/userprofile');
     } catch (err) {
         if (err.response) {
             console.log(err.response.data);
