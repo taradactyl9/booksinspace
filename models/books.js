@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         title: DataTypes.STRING,
         user_id: DataTypes.INTEGER,
         date_read: DataTypes.STRING,
-        status: DataTypes.STRING,
+        image: DataTypes.STRING,
         shelf_id: DataTypes.STRING,
         has_read: DataTypes.BOOLEAN,
     }, {
