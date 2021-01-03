@@ -6,7 +6,7 @@ router.get('/github', passport.authenticate('github'));
 
 router.get('/github/callback', passport.authenticate('github', {failureRedirect: '/login-failed'}),
 function (req, res) {
-    res.redirect('./partials/content');
+    res.redirect('./partials/userproile');
 });
 
 router.get('/logout', (req, res, next) => {
