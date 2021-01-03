@@ -51,4 +51,8 @@ router.patch('/books/:id', books_controller.books_update_patch);
 //Delete a book 
 router.delete("/books/:id", books_controller.book_delete_post);
 
+router.get("/terms", (req, res) => {
+    res.render("./partials/terms")
+})
+
 module.exports = router;
