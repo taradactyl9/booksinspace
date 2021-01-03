@@ -48,6 +48,12 @@ label {
     margin-left: .5rem;
 }
 
+img {
+    max-width: 200px;
+    max-height: 248px;
+    display: block;
+}
+
 
 /* ==================================================== */
 
@@ -175,8 +181,15 @@ button.register-btn {
     margin: 30px;
 }
 
-img {
-    max-width: 200px;
-    max-height: 248px;
-    display: block;
+
+/* ==================================================== */
+
+
+/* =================== USER PROFILE ================== */
+
+
+/* ==================================================== */
+
+.user-container>.row {
+    flex-wrap: nowrap;
 }
