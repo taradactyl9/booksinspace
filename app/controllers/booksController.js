@@ -45,29 +45,42 @@ exports.bookSearch = async(req, res) => {
 
 };
 
+exports.bookSave = async(req, res) => {
+
+    const userSelections = req.body;
+    const options = {
+        method: 'post',
+        url: `/book-search`,
+        data: data
+    }
+    const userSelectionCheck = await axios.request(options);
+    console.log(`Status: ${res.body}`);
+    // userSelections.forEach(userSelect => console.log(userSelect));
+}
+
 //Books Table
 
 // Post Book - Tested and Working
 exports.book_create_post = async function(req, res) {
-  if (!req.body.title) {
-    res.status(400).send({
-        message: "Book can not be empty!"
+    if (!req.body.title) {
+        res.status(400).send({
+            message: "Book can not be empty!"
+        });
+        return;
+    }
+
+    const { title, user_id, date_read, status, shelf_id, has_read } = req.body;
+
+    const newBook = await db.Books.create({
+        title,
+        user_id,
+        date_read,
+        status,
+        shelf_id,
+        has_read
     });
-    return;
-  }
 
-  const { title, user_id, date_read, status, shelf_id, has_read } = req.body;
-
-  const newBook = await db.Books.create({
-    title,
-    user_id,
-    date_read,
-    status,
-    shelf_id,
-    has_read
-  });
-
-  res.json(newBook);
+    res.json(newBook);
 }
 
 // Update a Book - tested and working
@@ -87,28 +100,27 @@ exports.books_update_patch = async function(req, res) { // TESTED & WORKING
 // Delete a book - tested and working
 
 exports.book_delete_post = async function(req, res) {
-  const { id } = req.params;
-  
-  const deletedBook = await db.Books.destroy({
-   where: {
-     id
-   }
-  })
-  res.json(deletedBook);
+    const { id } = req.params;
+
+    const deletedBook = await db.Books.destroy({
+        where: {
+            id
+        }
+    })
+    res.json(deletedBook);
 };
 
 //Get all of a users books - tested and working
 
 exports.books_findOne_get = async function(req, res) {
-  const { user_id } = req.params;
+    const { user_id } = req.params;
 
 
-  const savedBooksByUser = await db.Books.findAll({
-    where: {
-      user_id
-    }
-  })
-  
-  res.json(savedBooksByUser)
+    const savedBooksByUser = await db.Books.findAll({
+        where: {
+            user_id
+        }
+    })
+
+    res.json(savedBooksByUser)
 };
-
