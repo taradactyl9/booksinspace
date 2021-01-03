@@ -52,6 +52,8 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
+app.get('/github', passport.authenticate('github'));
+
 //Use the GitHub Strategy within Passport
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
