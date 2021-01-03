@@ -20,15 +20,25 @@
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
+    "serve": "^11.3.2",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
   },
-  "scripts": {
+  /* // /* "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
-  },
+  }, */ 
+  "scripts": {
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
+    }
+
   "keywords": [],
   "author": "",
   "license": "ISC",
