@@ -31,12 +31,12 @@ db.sequelize.sync();
 
 //Passport Authentication
 const passport = require('passport');
-const GitHubStrategy = require('passport-github');
+const GitHubStrategy = require('passport-github').Strategy;
 const session = require('express-session');
 
 //Passport Session Setup 
 app.use(session({
-    secret: 'abc123',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false
 }));
@@ -59,8 +59,11 @@ passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: process.env.GITHUB_CALLBACK_URL
-}, function(accessToken, refreshToken, profile, done) {
-    return done(null, profile);
+}, 
+function(accessToken, refreshToken, profile, cb) {
+    db.User.findOrCreate({ githubId: profile.id }, function (err, user) {
+        return cb(err, user);
+    });
 }))
 
 //Requiring the routes
