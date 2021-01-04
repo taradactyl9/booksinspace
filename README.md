@@ -7,84 +7,29 @@ Books In Space is a book cataloging app that allows you to search from a databas
 
 ## Getting Started
 Visit [link] to signup/login.
-
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+You will be redirected to a profile page which displays your books. 
+Search for any book you want to add from the search bar and select "Add Book" to add a book to your books.
+Enter the date read and if you have read or not read the book before and click "Save This Book" to save the book to your books.
+Clicking "Yes" will mark the book as Read. 
+Clicking "No" will mark the book as Want to read.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [EJS](https://ejs.co/) - Templating language used
+* [Javascript]
+* [Postgres](https://www.postgresql.org/) - Database
+* [Sequelize](http://sequelize.org/) - Used for database migrations
+* [Passport](http://www.passportjs.org/packages/) - The authentication strategies used
+* [Heroku](https://www.heroku.com/) - Deployment platform
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* [Kristin Hargrove](https://github.com/kristinhargrove)
+* [John Nutter](https://github.com/jnutterdev)
+* [Tara Davies](https://github.com/taradactyl9)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Hat tip to Goodreads for the inspo.
