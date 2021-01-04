@@ -26,6 +26,9 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
+      author: {
+        type: Sequelize.STRING
+      },
       has_read: {
         type: Sequelize.BOOLEAN
       },

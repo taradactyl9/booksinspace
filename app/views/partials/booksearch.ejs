@@ -6,18 +6,38 @@
                 <% bookData.forEach(function(item){ %>
                     <div class="card-container">
                         <h5>
-                            <%= item.title %>
+                            <%= item.title %><br>
+                            <%= item.authors %><br>
                         </h5>
                         <% if (item.image == "N/A") { %>
-                            <img src="img/movie-poster.png" alt="<%= item.title %>" width="200" height="248" />
+                            <form action="/addbook" METHOD="GET">
+                                <img src="img/movie-poster.png" alt="<%= item.title %>" width="200" height="248" />
+                            
+                                <label for="title"><input id="<%= item.title %>" type="text" name="<% item.title %>"></label>
 
-                            <input id="movie-saved" type="checkbox" name="movie-saved" value="<% item.title %>"><label for="<% item.Title %>">Save to bookshelf</label>
+                                <button type="submit" class="btn btn-primary register-btn">
+                                    poo
+                                </button>
+                            </form> 
 
                             <% } else { %>
-                                <img src="<%= item.image %>" alt="<%= item.image %>" width="200" height="248" />
+                                <form action="/addbook" METHOD="GET">
+                                    <img src="<%= item.image %>" alt="<%= item.image %>" width="200" height="248" />
 
-                                <input id="movie-saved" type="checkbox" name="movie-saved" value="<% item.title %>"><label for="<% item.title %>">Save to bookshelf</label>
-                                <% } %>
+                                    <input type="hidden" name="title" value="<%= item.title %>">
+
+                                    <input type="hidden" name="authors" value="<%= item.authors %>">
+
+                                    <input type="hidden" name="image" value="<%= item.image %>">
+
+                                    <button type="submit" class="btn btn-primary register-btn">My Books
+                                        <!--<a class="nav-link" href="#">
+                                            My Books
+                                        </a>-->
+                                    </button>
+                                </form>
+                            <% } %>
+
                     </div>
                     <% }) %>
 

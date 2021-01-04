@@ -10,7 +10,7 @@ exports.bookHome = (req, res) => {
 }
 
 exports.bookSearch = async(req, res) => {
-
+  console.log(req.query);
     try {
 
         let data = '';
@@ -45,6 +45,23 @@ exports.bookSearch = async(req, res) => {
 
 };
 
+exports.add_book_page = async(req, res) => {
+  const { title, authors, image } = req.query;
+
+  try {
+      res.render('./partials/addbook', { title, authors, image });
+  } catch (err) {
+      if (err.response) {
+          console.log(err.response.data);
+      } else if (err.request) {
+          console.log(err.request);
+      } else {
+          console.error("Error", err.message);
+      }
+  }
+
+}
+
 //Books Table
 
 // Post Book - Tested and Working
@@ -55,19 +72,19 @@ exports.book_create_post = async function(req, res) {
     });
     return;
   }
-
-  const { title, user_id, date_read, status, shelf_id, has_read } = req.body;
-
+  
+  const { title, date_read, image, author, has_read } = req.body;
+  
   const newBook = await db.Books.create({
     title,
-    user_id,
     date_read,
-    status,
-    shelf_id,
+    image,
+    author,
     has_read
   });
-
-  res.json(newBook);
+  
+  const { dataValues } = newBook;
+  res.render('./partials/userprofile');
 }
 
 // Update a Book - tested and working
@@ -101,16 +118,10 @@ exports.book_delete_post = async function(req, res) {
 //get all of users books, both true and false - tested and working
 
 exports.books_findOneUser_get = async function(req, res) {
-  const { user_id } = req.params;
 
-
-  const savedBooksByUser = await db.Books.findAll({
-    where: {
-      user_id
-    }
-  })
+  const savedBooks = await db.Books.findAll()
   
-  res.json(savedBooksByUser)
+  res.render('./partials/userprofile', { savedBooks });
 };
 
 //find a user's has_read = true books 
