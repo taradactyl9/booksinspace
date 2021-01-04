@@ -6,7 +6,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path'); // path needed to tell express to look for project folders inside of /app
 const sequelize = require("sequelize");
-//const sequelize = require("sequelize")
+const LocalStrategy = require('passport-local').Strategy
+
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -73,8 +74,32 @@ function(accessToken, refreshToken, profile, cb) {
 }))
 
 // Local Auth Strategy
-passport.use(new LocalStrategy(
-    function(username, password, done) {
+function initialize(passport,getUserByEmail){
+  const authenticateUser = (email, password, done) => {
+    const user = getUserByEmail(email)
+    if (user == null) {
+      return done(null, false, {'No user with that email'})
+    }
+    try {
+      if (await bcrypt.compare(password, user.password)) {
+        return done (null, user)
+      } else {
+        return done (null, false, {message: 'Password incorrect'})
+      }
+    } catch (e) {
+      return done(e)
+    }
+  }
+  module.exports = initialize
+
+  passport.use(new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password', }),
+  authenticateUser)
+  passport.serializeUser((user,done) => { })
+  passport.deserializeUser((id, done) => { })
+  }
+    /* function(email, password, done) {
       User.findOne({ email: email }, function (err, user) {
         if (err) { return done(err); }
         if (!user) { return done(null, false); }
@@ -82,7 +107,7 @@ passport.use(new LocalStrategy(
         return done(null, user);
       });
     }
-  ));
+  )); */
 
 //Requiring the routes
 
