@@ -25,6 +25,9 @@ router.get('/addbook', books_controller.add_book_page)
 //user profile page
 router.get('/userprofile', users_controller.user_profile_page);
 
+
+
+
 // register a new user
 router.get('/register', users_controller.user_register_page);
 
@@ -33,6 +36,10 @@ router.post('/user', users_controller.user_create_post);
 
 //Update a user
 router.patch('/user/:id', users_controller.user_update_patch);
+
+
+
+
 
 /// BOOK ROUTES ///
 

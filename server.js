@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path'); // path needed to tell express to look for project folders inside of /app
 const sequelize = require("sequelize");
+const LocalStrategy = require('passport-local').Strategy;
 //const sequelize = require("sequelize")
 
 const dotenv = require('dotenv');
@@ -25,15 +26,15 @@ app.use(favicon(__dirname + '/app/static/img/favicon.ico')); // sets the views, 
 // tells express to use ejs as templating engine
 app.use(express.static('app/static')); // tells express to look in app/static for css, img, or js files
 app.use(express.json())
-// specify local strategy to auth requests
-app.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
+    // specify local strategy to auth requests
+    // app.post('/login', 
+    //   passport.authenticate('local', { failureRedirect: '/login' }),
+    //   function(req, res) {
+    //     res.redirect('/');
+    //   });
 
 const db = require("./models");
-db.sequelize.sync();
+db.sequelize.sync({ force: true });
 
 //Passport Authentication
 const passport = require('passport');
@@ -62,27 +63,27 @@ app.get('/github', passport.authenticate('github'));
 
 //Use the GitHub Strategy within Passport
 passport.use(new GitHubStrategy({
-    clientID: process.env.GITHUB_CLIENT_ID,
-    clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: process.env.GITHUB_CALLBACK_URL
-}, 
-function(accessToken, refreshToken, profile, cb) {
-    db.User.findOrCreate({ githubId: profile.id }, function (err, user) {
-        return cb(err, user);
-    });
-}))
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: process.env.GITHUB_CALLBACK_URL
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        db.User.findOrCreate({ githubId: profile.id }, function(err, user) {
+            return cb(err, user);
+        });
+    }))
 
 // Local Auth Strategy
 passport.use(new LocalStrategy(
     function(username, password, done) {
-      User.findOne({ email: email }, function (err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        if (!user.verifyPassword(password)) { return done(null, false); }
-        return done(null, user);
-      });
+        User.findOne({ email: email }, function(err, user) {
+            if (err) { return done(err); }
+            if (!user) { return done(null, false); }
+            if (!user.verifyPassword(password)) { return done(null, false); }
+            return done(null, user);
+        });
     }
-  ));
+));
 
 //Requiring the routes
 
