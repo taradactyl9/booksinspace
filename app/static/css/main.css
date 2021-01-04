@@ -148,7 +148,7 @@
     
     .card-container {
         display: inline-block;
-        margin: 30px auto;
+        margin: 30px 0;
     }
     
     .socially {
@@ -165,4 +165,11 @@
     .card-group>.card {
         flex: none;
         justify-content: space-between;
+    }
+    
+    .card-img,
+    .card-img-top {
+        border-top-left-radius: calc(.4rem - 1px);
+        border-top-right-radius: calc(.4rem - 1px);
+        margin: 20px auto 5px;
     }
