@@ -73,14 +73,15 @@ exports.book_create_post = async function(req, res) {
     return;
   }
   
-  const { title, date_read, image, author, has_read } = req.body;
+  const { title, date_read, image, author, has_read, user_id } = req.body;
   
   const newBook = await db.Books.create({
     title,
     date_read,
     image,
     author,
-    has_read
+    has_read,
+    user_id
   });
   
   const { dataValues } = newBook;
