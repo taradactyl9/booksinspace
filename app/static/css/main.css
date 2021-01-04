@@ -162,9 +162,14 @@
         flex-wrap: nowrap;
     }
     
+    .card-spacing {
+        margin-top: 16px;
+    }
+    
     .card-group>.card {
         flex: none;
         justify-content: space-between;
+        border: none;
     }
     
     .card-img,
