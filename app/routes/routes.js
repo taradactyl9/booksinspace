@@ -17,6 +17,9 @@ router.get('/', books_controller.bookHome);
 //GET book from isbndb api
 router.get('/book-search', books_controller.bookSearch);
 
+//add book page
+router.get('/addbook', books_controller.add_book_page)
+
 // USER ROUTES //
 
 //user profile page

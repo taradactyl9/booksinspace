@@ -1,0 +1,37 @@
+<div class="signup-container">
+    <div class="row">
+        <div class="col">
+            <div class="register-col"> </div>
+        </div>
+        <div class="col">
+            <form action="/books" method="POST">
+                <div class="container">
+                    <h1>Add Book</h1>
+                    <hr>
+
+                    <label for="email"><b>Title</b></label>
+                    <input class="form-control input-sm" type="text" name="title" id="title" value="<%= title %>" required>
+
+                    <label for="author"><b>Author</b></label>
+                    <input class="form-control input-sm" type="author" placeholder="Enter Author" name="author" id="author" value="<%= authors %>" required>
+
+                    <label for="date_read"><b>Date Read</b></label>
+                    <input class="form-control input-sm" type="date_read" placeholder="Enter Date Read" name="date_read" id="date_read">
+
+                    <b>Have you read this before?</b><br>
+                        <input type="radio" id="true" name="has_read" value="true" style="width: 50%">
+                        <label for="true">Yes</label><br>
+                        <input type="radio" id="false" name="has_read" value="false" style="width: 50%">
+                        <label for="true">No</label><br>
+
+                    <input type="hidden" name="image" value="<%= image %>">    
+                    <hr>
+
+                    <button type="submit" class="btn btn-primary register-btn">Save This Book</button>
+                    <hr>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
