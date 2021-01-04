@@ -55,7 +55,8 @@ exports.user_create_post = async function(req, res) {
             name
         });
 
-        res.json(User);
+        res.render('./partials/userprofile', { name: name, email: email });
+
     } catch (err) {
         if (err.response) {
             console.log(err.response.data);
