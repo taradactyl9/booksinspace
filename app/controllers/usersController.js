@@ -38,22 +38,33 @@ exports.user_register_page = (req, res) => {
 // user signs up - tested and working
 exports.user_create_post = async function(req, res) {
     console.log(req.body);
-    if (!req.body.email || !req.body.password) {
-        res.status(400).send({
-            message: "You need an email & password to create an account!"
+
+    try {
+        if (!req.body.email || !req.body.password) {
+            res.status(400).send({
+                message: "You need an email & password to create an account!"
+            });
+            return;
+        }
+
+        const { email, name, password } = req.body;
+
+        const User = await db.User.create({
+            password,
+            email,
+            name
         });
-        return;
+
+        res.json(User);
+    } catch (err) {
+        if (err.response) {
+            console.log(err.response.data);
+        } else if (err.request) {
+            console.log(err.request);
+        } else {
+            console.error("Error", err.message);
+        }
     }
-
-    const { email, name, password } = req.body;
-
-    const newUser = await db.User.create({
-        email,
-        name,
-        password
-    });
-
-    res.json(newUser)
 }
 
 //update user - tested and working
