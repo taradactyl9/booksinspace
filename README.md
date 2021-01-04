@@ -1,6 +1,6 @@
 # Books In Space
 
-Books In Space is a book cataloging app that allows you to search from a database of books and mark them as Read or Want to Read so that the user can reference it later when deciding what books to read next.
+Books In Space is a book cataloging app that allows users to search from a database of books and mark them as Read or Want to Read so that the user can reference it later when deciding what books to read next.
 * Search through large database of books
 * Save books as Read
 * Save books as Want to read
