@@ -25,9 +25,6 @@ router.get('/addbook', books_controller.add_book_page)
 //user profile page
 router.get('/userprofile', users_controller.user_profile_page);
 
-
-
-
 // register a new user
 router.get('/register', users_controller.user_register_page);
 
@@ -37,20 +34,16 @@ router.post('/user', users_controller.user_create_post);
 //Update a user
 router.patch('/user/:id', users_controller.user_update_patch);
 
-
-
-
-
 /// BOOK ROUTES ///
 
 //GET User books
 router.get('/books/user/:user_id', books_controller.books_findOneUser_get);
 
 //GET User has_read = true books
-router.get('/books/user/:user_id/read', books_controller.books_hasReadTrue_get);
+router.get('/read', books_controller.books_hasReadTrue_get);
 
 //GET User has_read = false books
-router.get('/books/user/:user_id/unread', books_controller.books_hasReadFalse_get);
+router.get('/unread', books_controller.books_hasReadFalse_get);
 
 //Add a book 
 router.post('/books', books_controller.book_create_post);
@@ -59,7 +52,7 @@ router.post('/books', books_controller.book_create_post);
 router.patch('/books/:id', books_controller.books_update_patch);
 
 //Delete a book 
-router.delete("/books/:id", books_controller.book_delete_post);
+router.post("/books/:id", books_controller.book_delete_post);
 
 router.get("/terms", (req, res) => {
     res.render("./partials/terms")
