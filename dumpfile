@@ -1,0 +1,476 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.1
+-- Dumped by pg_dump version 13.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: Books; Type: TABLE; Schema: public; Owner: taradavies
+--
+
+CREATE TABLE public."Books" (
+    id integer NOT NULL,
+    title character varying(255),
+    user_id character varying(255),
+    date_read character varying(255),
+    shelf_id character varying(255),
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL,
+    status character varying(255)
+);
+
+
+ALTER TABLE public."Books" OWNER TO taradavies;
+
+--
+-- Name: Books_id_seq; Type: SEQUENCE; Schema: public; Owner: taradavies
+--
+
+CREATE SEQUENCE public."Books_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Books_id_seq" OWNER TO taradavies;
+
+--
+-- Name: Books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: taradavies
+--
+
+ALTER SEQUENCE public."Books_id_seq" OWNED BY public."Books".id;
+
+
+--
+-- Name: Reads; Type: TABLE; Schema: public; Owner: taradavies
+--
+
+CREATE TABLE public."Reads" (
+    id integer NOT NULL,
+    book_id character varying(255),
+    user_id character varying(255),
+    title character varying(255),
+    date_read character varying(255),
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public."Reads" OWNER TO taradavies;
+
+--
+-- Name: Reads_id_seq; Type: SEQUENCE; Schema: public; Owner: taradavies
+--
+
+CREATE SEQUENCE public."Reads_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Reads_id_seq" OWNER TO taradavies;
+
+--
+-- Name: Reads_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: taradavies
+--
+
+ALTER SEQUENCE public."Reads_id_seq" OWNED BY public."Reads".id;
+
+
+--
+-- Name: Reviews; Type: TABLE; Schema: public; Owner: taradavies
+--
+
+CREATE TABLE public."Reviews" (
+    id integer NOT NULL,
+    user_id character varying(255),
+    comment character varying(255),
+    rating character varying(255),
+    book_id character varying(255),
+    date_read character varying(255),
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public."Reviews" OWNER TO taradavies;
+
+--
+-- Name: Reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: taradavies
+--
+
+CREATE SEQUENCE public."Reviews_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Reviews_id_seq" OWNER TO taradavies;
+
+--
+-- Name: Reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: taradavies
+--
+
+ALTER SEQUENCE public."Reviews_id_seq" OWNED BY public."Reviews".id;
+
+
+--
+-- Name: SequelizeMeta; Type: TABLE; Schema: public; Owner: taradavies
+--
+
+CREATE TABLE public."SequelizeMeta" (
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public."SequelizeMeta" OWNER TO taradavies;
+
+--
+-- Name: Shelves; Type: TABLE; Schema: public; Owner: taradavies
+--
+
+CREATE TABLE public."Shelves" (
+    id integer NOT NULL,
+    shelf_name character varying(255),
+    user_id character varying(255),
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL,
+    status character varying(255)
+);
+
+
+ALTER TABLE public."Shelves" OWNER TO taradavies;
+
+--
+-- Name: Shelves_id_seq; Type: SEQUENCE; Schema: public; Owner: taradavies
+--
+
+CREATE SEQUENCE public."Shelves_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Shelves_id_seq" OWNER TO taradavies;
+
+--
+-- Name: Shelves_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: taradavies
+--
+
+ALTER SEQUENCE public."Shelves_id_seq" OWNED BY public."Shelves".id;
+
+
+--
+-- Name: Users; Type: TABLE; Schema: public; Owner: taradavies
+--
+
+CREATE TABLE public."Users" (
+    id integer NOT NULL,
+    username character varying(255),
+    email character varying(255),
+    name character varying(255),
+    location character varying(255),
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public."Users" OWNER TO taradavies;
+
+--
+-- Name: Users_id_seq; Type: SEQUENCE; Schema: public; Owner: taradavies
+--
+
+CREATE SEQUENCE public."Users_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Users_id_seq" OWNER TO taradavies;
+
+--
+-- Name: Users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: taradavies
+--
+
+ALTER SEQUENCE public."Users_id_seq" OWNED BY public."Users".id;
+
+
+--
+-- Name: wanttoreads; Type: TABLE; Schema: public; Owner: taradavies
+--
+
+CREATE TABLE public.wanttoreads (
+    id integer NOT NULL,
+    book_id character varying(255),
+    title character varying(255),
+    user_id character varying(255),
+    status character varying(255),
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.wanttoreads OWNER TO taradavies;
+
+--
+-- Name: wanttoreads_id_seq; Type: SEQUENCE; Schema: public; Owner: taradavies
+--
+
+CREATE SEQUENCE public.wanttoreads_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.wanttoreads_id_seq OWNER TO taradavies;
+
+--
+-- Name: wanttoreads_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: taradavies
+--
+
+ALTER SEQUENCE public.wanttoreads_id_seq OWNED BY public.wanttoreads.id;
+
+
+--
+-- Name: Books id; Type: DEFAULT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Books" ALTER COLUMN id SET DEFAULT nextval('public."Books_id_seq"'::regclass);
+
+
+--
+-- Name: Reads id; Type: DEFAULT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Reads" ALTER COLUMN id SET DEFAULT nextval('public."Reads_id_seq"'::regclass);
+
+
+--
+-- Name: Reviews id; Type: DEFAULT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Reviews" ALTER COLUMN id SET DEFAULT nextval('public."Reviews_id_seq"'::regclass);
+
+
+--
+-- Name: Shelves id; Type: DEFAULT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Shelves" ALTER COLUMN id SET DEFAULT nextval('public."Shelves_id_seq"'::regclass);
+
+
+--
+-- Name: Users id; Type: DEFAULT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Users" ALTER COLUMN id SET DEFAULT nextval('public."Users_id_seq"'::regclass);
+
+
+--
+-- Name: wanttoreads id; Type: DEFAULT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public.wanttoreads ALTER COLUMN id SET DEFAULT nextval('public.wanttoreads_id_seq'::regclass);
+
+
+--
+-- Data for Name: Books; Type: TABLE DATA; Schema: public; Owner: taradavies
+--
+
+COPY public."Books" (id, title, user_id, date_read, shelf_id, "createdAt", "updatedAt", status) FROM stdin;
+1	Wind-up bird chronicle	\N	\N	\N	2020-12-23 00:06:03.526-05	2020-12-23 00:06:03.526-05	\N
+2	Wind-up bird chronicle	\N	\N	\N	2020-12-23 00:08:50.959-05	2020-12-23 00:08:50.959-05	\N
+3	Wind-up bird chronicle	2	\N	\N	2020-12-23 00:09:24.629-05	2020-12-23 00:09:24.629-05	\N
+\.
+
+
+--
+-- Data for Name: Reads; Type: TABLE DATA; Schema: public; Owner: taradavies
+--
+
+COPY public."Reads" (id, book_id, user_id, title, date_read, "createdAt", "updatedAt") FROM stdin;
+\.
+
+
+--
+-- Data for Name: Reviews; Type: TABLE DATA; Schema: public; Owner: taradavies
+--
+
+COPY public."Reviews" (id, user_id, comment, rating, book_id, date_read, "createdAt", "updatedAt") FROM stdin;
+\.
+
+
+--
+-- Data for Name: SequelizeMeta; Type: TABLE DATA; Schema: public; Owner: taradavies
+--
+
+COPY public."SequelizeMeta" (name) FROM stdin;
+20201223015627-create-user.js
+20201223020342-create-books.js
+20201223020619-create-read.js
+20201223034030-create-reviews.js
+20201223034438-create-shelves.js
+\.
+
+
+--
+-- Data for Name: Shelves; Type: TABLE DATA; Schema: public; Owner: taradavies
+--
+
+COPY public."Shelves" (id, shelf_name, user_id, "createdAt", "updatedAt", status) FROM stdin;
+\.
+
+
+--
+-- Data for Name: Users; Type: TABLE DATA; Schema: public; Owner: taradavies
+--
+
+COPY public."Users" (id, username, email, name, location, "createdAt", "updatedAt") FROM stdin;
+\.
+
+
+--
+-- Data for Name: wanttoreads; Type: TABLE DATA; Schema: public; Owner: taradavies
+--
+
+COPY public.wanttoreads (id, book_id, title, user_id, status, "createdAt", "updatedAt") FROM stdin;
+\.
+
+
+--
+-- Name: Books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: taradavies
+--
+
+SELECT pg_catalog.setval('public."Books_id_seq"', 3, true);
+
+
+--
+-- Name: Reads_id_seq; Type: SEQUENCE SET; Schema: public; Owner: taradavies
+--
+
+SELECT pg_catalog.setval('public."Reads_id_seq"', 1, false);
+
+
+--
+-- Name: Reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: taradavies
+--
+
+SELECT pg_catalog.setval('public."Reviews_id_seq"', 1, false);
+
+
+--
+-- Name: Shelves_id_seq; Type: SEQUENCE SET; Schema: public; Owner: taradavies
+--
+
+SELECT pg_catalog.setval('public."Shelves_id_seq"', 1, false);
+
+
+--
+-- Name: Users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: taradavies
+--
+
+SELECT pg_catalog.setval('public."Users_id_seq"', 1, false);
+
+
+--
+-- Name: wanttoreads_id_seq; Type: SEQUENCE SET; Schema: public; Owner: taradavies
+--
+
+SELECT pg_catalog.setval('public.wanttoreads_id_seq', 1, false);
+
+
+--
+-- Name: Books Books_pkey; Type: CONSTRAINT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Books"
+    ADD CONSTRAINT "Books_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Reads Reads_pkey; Type: CONSTRAINT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Reads"
+    ADD CONSTRAINT "Reads_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Reviews Reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Reviews"
+    ADD CONSTRAINT "Reviews_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: SequelizeMeta SequelizeMeta_pkey; Type: CONSTRAINT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."SequelizeMeta"
+    ADD CONSTRAINT "SequelizeMeta_pkey" PRIMARY KEY (name);
+
+
+--
+-- Name: Shelves Shelves_pkey; Type: CONSTRAINT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Shelves"
+    ADD CONSTRAINT "Shelves_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Users Users_pkey; Type: CONSTRAINT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public."Users"
+    ADD CONSTRAINT "Users_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: wanttoreads wanttoreads_pkey; Type: CONSTRAINT; Schema: public; Owner: taradavies
+--
+
+ALTER TABLE ONLY public.wanttoreads
+    ADD CONSTRAINT wanttoreads_pkey PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
