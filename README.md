@@ -16,7 +16,8 @@ Clicking "No" will mark the book as Want to read.
 ## Built With
 
 * [EJS](https://ejs.co/) - Templating language used
-* [Javascript]
+* [Express.js](http://expressjs.com/) - JS library
+* [Bootstrap](https://getbootstrap.com/) - CSS framework
 * [Postgres](https://www.postgresql.org/) - Database
 * [Sequelize](http://sequelize.org/) - Used for database migrations
 * [Passport](http://www.passportjs.org/packages/) - The authentication strategies used
