@@ -1,3 +1,4 @@
 node_modules   
 .env
 _workflow.md
+config/config.json
