@@ -1,66 +1,111 @@
 <div class="user-container">
     <div class="row">
-
-
-        <div class="col">
+        <div class="col-4">
 
             <div class="card" style="width: 18rem;">
-                <img src="" class="card-img-top" alt="john space">
+                <!--<img src="" class="card-img-top" alt="john space" />-->
                 <div class="card-body">
                     <h5 class="card-title">
-                        <%= name %>
+                        Mr. Book Reader 
                     </h5>
                     <p class="card-text"><strong>Bio:</strong> Click <a href="#">here</a> to add a bio.</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>Email: </strong>
-                        <%= email  %>
+                        user@gmail.com
                     </li>
-                    <li class="list-group-item"><strong>Books read: </strong> 42</li>
+                    <li class="list-group-item"><strong>Books read: </strong> 2,000</li>
                     <li class="list-group-item"><strong>Birthday: </strong> 05/01</li>
                 </ul>
             </div>
+        </div>   
+        <div class="col card-layouts">
+            <% if (readBooksByUser.length > 0) { %>
+                <% readBooksByUser.forEach(function(book) { %>
+                    <div class="card-container">
+                        <h5>
+                            <strong><%= book.title %><br></strong>
+                        </h5>
+                    <% if (book.image == "N/A") { %>
+                        <img src="img/movie-poster.png" alt="<%= book.title %>" width="200" height="248" style="padding: 10px;" />
+
+                        <h5><%= book.author %></h5>
+
+                        <input type="hidden" name="id" value="<%= book.id %>">
+
+                        <form action="/books/<%=book.id %>" method="POST">
+                            <button type="submit" class="btn btn-primary">
+                                Remove From Shelf
+                            </button>
+                        </form>
+
+                    <% } else { %>
+                        <img src="<%= book.image %>" alt="<%= book.image %>" width="200" height="248" style="padding: 10px;" />
+
+                        <h5><%= book.author %></h5>
+
+                        <input type="hidden" name="id" value="<%= book.id %>">
+
+                        <form action="/books/<%=book.id %>" method="POST">
+                            <button type="submit" class="btn btn-primary">
+                                Remove From Shelf
+                            </button>
+                        </form>
+                    </div>
+                    <% } %>
+                <% }) %>
+            <% } else if (unreadBooksByUser.length > 0) { %>
+                <% unreadBooksByUser.forEach(function(book) { %>
+                    <div class="card-container">
+                        <h5>
+                            <strong><%= book.title %></strong>
+                        </h5>
+                    <% if (book.image == "N/A") { %>
+                        <img src="img/movie-poster.png" alt="<%= book.title %>" width="200" height="248" style="padding: 10px;" />
+
+                        <h5><%= book.author %></h5>
+
+                        <input type="hidden" name="id" value="<%= book.id %>">
+
+                        <form action="/books/<%=book.id %>" method="POST">
+                            <button type="submit" class="btn btn-primary">
+                                Remove From Shelf
+                            </button>
+                        </form>
+
+                    <% } else { %>
+                        <img src="<%= book.image %>" alt="<%= book.image %>" width="200" height="248" style="padding: 10px;" />
+
+                        <h5><%= book.author %></h5>
+
+                        <input type="hidden" name="id" value="<%= book.id %>">
+
+                        <form action="/books/<%=book.id %>" method="POST">
+                            <button type="submit" class="btn btn-primary">
+                                Remove From Shelf
+                            </button>
+                        </form>
+                    </div>
+                    <% } %>
+                <% }) %>
+            <% } else { %>
+            
+                <form action="/read" method="GET">
+                    <button type="submit" class="btn btn-primary" style="margin-top: 50px;margin-left: auto;margin-right: auto;display:block">
+                        View Read Books
+                    </button>
+                </form>
+                <form action="/unread" method="GET">
+                    <button type="submit" class="btn btn-primary"
+                    style="margin-top:50px;margin-left: auto;margin-right: auto;display:block">
+                        View Unread Books
+                    </button>
+                </form>
+                
+            <% } %>
+    
         </div>
-        <!-- BOOKS READ -->
-
-        <div class="card-group card-spacing">
-
-            <div class="card">
-                <div class="card-layouts">
-                    <img src="img/cosmos.jpg" alt="Cosmos">
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-layouts">
-                    <img src="img/cosmos.jpg" alt="Cosmos">
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-layouts">
-                    <img src="img/cosmos.jpg" alt="Cosmos">
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-layouts">
-                    <img src="img/cosmos.jpg" alt="Cosmos">
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-layouts">
-                    <img src="img/cosmos.jpg" alt="Cosmos">
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-layouts">
-                    <img src="img/cosmos.jpg" alt="Cosmos">
-                </div>
-            </div>
-        </div>
-
-    </div>
 </div>
+</div>
+
+    
