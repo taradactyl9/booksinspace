@@ -73,18 +73,19 @@ exports.book_create_post = async function(req, res) {
     return;
   }
   
-  const { title, date_read, image, author, has_read } = req.body;
+  const { title, date_read, image, author, has_read, user_id } = req.body;
   
   const newBook = await db.Books.create({
     title,
     date_read,
     image,
     author,
-    has_read
+    has_read,
+    user_id
   });
-  
+ 
   const { dataValues } = newBook;
-  res.render('./partials/userprofile');
+  res.render('./partials/userprofile', { readBooksByUser: [], unreadBooksByUser: [] });
 }
 
 // Update a Book - tested and working
@@ -112,7 +113,7 @@ exports.book_delete_post = async function(req, res) {
    }
   })
 
-  res.json(deletedBook);
+  res.send('You removed the book from your shelf.');
 };
 
 //get all of users books, both true and false - tested and working
@@ -124,30 +125,30 @@ exports.books_findOneUser_get = async function(req, res) {
   res.render('./partials/userprofile', { savedBooks });
 };
 
-//find a user's has_read = true books 
+//find a user's has_read = true books - books they read
 exports.books_hasReadTrue_get = async function(req, res) {
-  const { user_id, has_read } = req.params;
 
   const readBooksByUser = await db.Books.findAll({
     where: {
-      user_id,
       has_read: true
     }
   })
   
-  res.json(readBooksByUser)
+  res.render('./partials/userprofile', { readBooksByUser, unreadBooksByUser: [] });
+ 
 };
 
-//find a user's has_read = false books 
+//find a user's has_read = false books - books they want to read
 exports.books_hasReadFalse_get = async function(req, res) {
-  const { user_id, has_read } = req.params;
 
   const unreadBooksByUser = await db.Books.findAll({
     where: {
-      user_id,
       has_read: false
     }
   })
+
+  console.log('got ehre');
+  console.log(unreadBooksByUser);
   
-  res.json(unreadBooksByUser)
+  res.render('./partials/userprofile', { unreadBooksByUser, readBooksByUser: [] });
 };

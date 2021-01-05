@@ -7,18 +7,22 @@
                     <div class="card-container">
                         <h5>
                             <%= item.title %><br>
-                            <%= item.authors %><br>
                         </h5>
                         <% if (item.image == "N/A") { %>
                             <form action="/addbook" METHOD="GET">
                                 <img src="img/movie-poster.png" alt="<%= item.title %>" width="200" height="248" />
                             
-                                <label for="title"><input id="<%= item.title %>" type="text" name="<% item.title %>"></label>
+                                <input type="hidden" name="title" value="<%= item.title %>">
 
-                                <button type="submit" class="btn btn-primary register-btn">
-                                    poo
-                                </button>
-                            </form> 
+                                    <img src="img/movie-poster.png" alt="<%= item.title %>" width="200" height="248" />
+
+                                    <input type="hidden" name="image" value="<%= item.image %>">
+
+                                    <br />
+
+                                    <button type="submit" class="btn btn-primary register-btn">Add Book
+                                    </button>
+                                </form>
 
                             <% } else { %>
                                 <form action="/addbook" METHOD="GET">
@@ -30,10 +34,8 @@
 
                                     <input type="hidden" name="image" value="<%= item.image %>">
 
-                                    <button type="submit" class="btn btn-primary register-btn">My Books
-                                        <!--<a class="nav-link" href="#">
-                                            My Books
-                                        </a>-->
+                                    <br />
+                                    <button type="submit" class="btn btn-primary register-btn">Add Book
                                     </button>
                                 </form>
                             <% } %>
