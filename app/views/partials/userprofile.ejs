@@ -66,7 +66,7 @@
                         <h5><%= book.author %></h5>
 
                         <input type="hidden" name="id" value="<%= book.id %>">
-
+                        
                         <form action="/books/<%=book.id %>" method="POST">
                             <button type="submit" class="btn btn-primary">
                                 Remove From Shelf
@@ -79,6 +79,12 @@
                         <h5><%= book.author %></h5>
 
                         <input type="hidden" name="id" value="<%= book.id %>">
+
+                        <form action="/books/update/<%= book.id %>" method="POST">
+                            <button type="submit" id="true" name="has_read" value="true"
+                             class="btn btn-primary">Mark as Read
+                             </button>
+                        </form> <br />
 
                         <form action="/books/<%=book.id %>" method="POST">
                             <button type="submit" class="btn btn-primary">
