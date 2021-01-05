@@ -49,7 +49,7 @@ router.get('/unread', books_controller.books_hasReadFalse_get);
 router.post('/books', books_controller.book_create_post);
 
 //Mark as Read/Want to Read on update
-router.patch('/books/:id', books_controller.books_update_patch);
+router.post('/books/update/:id', books_controller.books_update_patch);
 
 //Delete a book 
 router.post("/books/:id", books_controller.book_delete_post);
