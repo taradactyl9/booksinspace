@@ -8,7 +8,7 @@ const Sequelize = require('sequelize');
 exports.user_profile_page = async(req, res) => {
 
     try {
-        const results = res.render('./partials/userprofile');
+        const results = res.render('./partials/userprofile', { readBooksByUser: [], unreadBooksByUser: [] });
     } catch (err) {
         if (err.response) {
             console.log(err.response.data);
