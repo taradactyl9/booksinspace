@@ -99,7 +99,7 @@ exports.books_update_patch = async function(req, res) { // TESTED & WORKING
         }
     });
 
-    res.json(updatedBook);
+    res.send('Congrats, you read a book!';
 };
 
 // Delete a book - tested and working
